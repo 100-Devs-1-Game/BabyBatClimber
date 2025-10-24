@@ -15,14 +15,21 @@ var delta_height: float
 func _ready() -> void:
 	player.position= Vector2(1920 / 2 + width / 2 - player.width / 2, 1080 * 0.8)
 
-	var KILL_OBJECT = preload("res://kill_object.tscn")
+	var KILL_OBJECT = preload("res://mushroom_object.tscn")
 	var obj: LevelObject= KILL_OBJECT.instantiate()
 	obj.position= Vector2(1920 / 2 - width / 2 - 5, 0)
+	obj.scale.x= -1
 	add_child(obj)
 	level_objects.append(obj)
 
 	obj= KILL_OBJECT.instantiate()
 	obj.position= Vector2(1920 / 2 + width / 2 + 5, -300)
+	add_child(obj)
+	level_objects.append(obj)
+
+	obj= KILL_OBJECT.instantiate()
+	obj.position= Vector2(1920 / 2 - width / 2 - 5, -600)
+	obj.scale.x= -1
 	add_child(obj)
 	level_objects.append(obj)
 
