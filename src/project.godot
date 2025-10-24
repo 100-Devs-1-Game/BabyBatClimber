@@ -23,6 +23,11 @@ window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="viewport"
 
+[editor]
+
+movie_writer/movie_file="C:/_CODING/100devs/movie.avi"
+movie_writer/fps=30
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
