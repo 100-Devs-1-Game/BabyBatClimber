@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bko32gv7htaoc"]
+
+[ext_resource type="Script" uid="uid://bbg0uj8faf0jf" path="res://kill_object.gd" id="1_lx60u"]
+[ext_resource type="PackedScene" uid="uid://cjqe8mfxditgi" path="res://kill_area.tscn" id="1_uqok2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lx60u"]
+size = Vector2(20, 150)
+
+[node name="KillObject" type="Node2D"]
+script = ExtResource("1_lx60u")
+
+[node name="Area2D" parent="." instance=ExtResource("1_uqok2")]
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("RectangleShape2D_lx60u")
+
+[editable path="Area2D"]
