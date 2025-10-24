@@ -13,7 +13,7 @@ var delta_height: float
 
 
 func _ready() -> void:
-	player.position= Vector2(1920 / 2 + width / 2 - player.width / 2, 1080 / 2)
+	player.position= Vector2(1920 / 2 + width / 2 - player.width / 2, 1080 * 0.8)
 
 	var KILL_OBJECT = preload("res://kill_object.tscn")
 	var obj: LevelObject= KILL_OBJECT.instantiate()
