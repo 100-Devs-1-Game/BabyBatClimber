@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bybibjaxh6r72"]
+
+[ext_resource type="Script" uid="uid://d4mud50cb15su" path="res://player.gd" id="1_4flbx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oi3di"]
+radius = 30.0
+height = 150.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_4flbx")
+climb_speed = 150.0
+horizontal_speed = 800.0
+jump_boost = 500.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_oi3di")

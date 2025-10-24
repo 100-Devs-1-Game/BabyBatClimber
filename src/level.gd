@@ -2,11 +2,9 @@ class_name Level
 extends Node2D
 
 @export var width: float = 500.0
+@export var level_side_shader: ShaderMaterial
 
 @onready var player: CharacterBody2D = $Player
-
-@onready var left_polygon: Polygon2D = %"Left Polygon"
-@onready var right_polygon: Polygon2D = %"Right Polygon"
 
 var height: float= 0
 var level_objects: Array[LevelObject]
@@ -15,7 +13,6 @@ var delta_height: float
 
 
 func _ready() -> void:
-	_init_polygons()
 	player.position= Vector2(1920 / 2 + width / 2 - player.width / 2, 1080 / 2)
 
 	var KILL_OBJECT = preload("res://kill_object.tscn")
@@ -36,20 +33,8 @@ func _physics_process(delta: float) -> void:
 	
 	for obj in level_objects:
 		obj.position.y+= delta_height
-	
 
-func _init_polygons():
-	left_polygon.polygon=[
-		Vector2(0, 0),
-		Vector2(1920 / 2 - width / 2, 0),
-		Vector2(1920 / 2 - width / 2, 1080),
-		Vector2(0, 1080)]
-	
-	right_polygon.polygon=[
-		Vector2(1920 / 2 + width / 2, 0),
-		Vector2(1920, 0),
-		Vector2(1920, 1080),
-		Vector2(1920 / 2 + width / 2,1080)]
+	level_side_shader.set_shader_parameter("height", -height / 1468.0)
 
 
 func get_left_side()-> float:

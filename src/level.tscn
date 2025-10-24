@@ -1,67 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://b603tnllthddv"]
+[gd_scene load_steps=6 format=3 uid="uid://b603tnllthddv"]
 
 [ext_resource type="Script" uid="uid://cev76inr16fwj" path="res://level.gd" id="1_u52ul"]
-[ext_resource type="Script" uid="uid://d4mud50cb15su" path="res://player.gd" id="2_vonw3"]
-[ext_resource type="Script" uid="uid://c7wrmk0rya284" path="res://background.gd" id="3_1ainy"]
-[ext_resource type="Texture2D" uid="uid://clo5tcjg1y2b4" path="res://assets/art/placeholder/bg_forest.png" id="3_oi3di"]
-[ext_resource type="Texture2D" uid="uid://b2sye1bphdprq" path="res://assets/art/placeholder/bg_mountains.png" id="4_n6hdu"]
-[ext_resource type="Script" uid="uid://7cnpnuewq2tx" path="res://background_layer.gd" id="5_km5ld"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oi3di"]
-radius = 30.0
-height = 150.0
+[ext_resource type="Material" uid="uid://bbuvkw80wegb5" path="res://level_side_shader_material.tres" id="2_8cye3"]
+[ext_resource type="Texture2D" uid="uid://bhs8j3plku7g3" path="res://assets/art/fixed/level_side.png" id="2_i2t4f"]
+[ext_resource type="PackedScene" uid="uid://bybibjaxh6r72" path="res://player.tscn" id="4_f2txt"]
+[ext_resource type="PackedScene" uid="uid://jtdbnlpdoalk" path="res://background.tscn" id="5_1ainy"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_u52ul")
+width = 1200.0
+level_side_shader = ExtResource("2_8cye3")
 
-[node name="Left Polygon" type="Polygon2D" parent="."]
-unique_name_in_owner = true
-color = Color(0.460882, 0.364139, 0.175635, 1)
+[node name="Right Sprite" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = ExtResource("2_8cye3")
+position = Vector2(1262, 346)
+texture = ExtResource("2_i2t4f")
 
-[node name="Right Polygon" type="Polygon2D" parent="."]
-unique_name_in_owner = true
-color = Color(0.460882, 0.364139, 0.175635, 1)
+[node name="Left Sprite" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = ExtResource("2_8cye3")
+position = Vector2(658, 346)
+texture = ExtResource("2_i2t4f")
+flip_h = true
 
-[node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("2_vonw3")
-climb_speed = 150.0
-horizontal_speed = 800.0
-jump_boost = 500.0
+[node name="Player" parent="." instance=ExtResource("4_f2txt")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CapsuleShape2D_oi3di")
-
-[node name="Background" type="CanvasLayer" parent="."]
-layer = -1
-script = ExtResource("3_1ainy")
-
-[node name="Mountains" type="TextureRect" parent="Background"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -400.0
-offset_top = -600.0
-offset_right = 400.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("4_n6hdu")
-script = ExtResource("5_km5ld")
-scroll_speed = 0.05
-
-[node name="Forest" type="TextureRect" parent="Background"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -400.0
-offset_top = -626.0
-offset_right = 400.0
-offset_bottom = -26.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("3_oi3di")
-script = ExtResource("5_km5ld")
-scroll_speed = 0.2
+[node name="Background" parent="." instance=ExtResource("5_1ainy")]
