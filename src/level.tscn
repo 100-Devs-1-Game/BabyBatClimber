@@ -8,19 +8,19 @@
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_u52ul")
-width = 1200.0
+width = 600.0
 level_side_shader = ExtResource("2_8cye3")
 
 [node name="Right Sprite" type="Sprite2D" parent="."]
 texture_repeat = 2
 material = ExtResource("2_8cye3")
-position = Vector2(1262, 346)
+position = Vector2(962, 346)
 texture = ExtResource("2_i2t4f")
 
 [node name="Left Sprite" type="Sprite2D" parent="."]
 texture_repeat = 2
 material = ExtResource("2_8cye3")
-position = Vector2(658, 346)
+position = Vector2(958, 346)
 texture = ExtResource("2_i2t4f")
 flip_h = true
 
