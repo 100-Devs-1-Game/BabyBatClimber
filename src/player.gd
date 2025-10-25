@@ -11,8 +11,11 @@ enum PlayerSide { NONE, LEFT, RIGHT }
 @onready var level: Level= get_parent()
 
 var side: PlayerSide= PlayerSide.RIGHT
+var current_climb_speed: float
 var jump_dir: int
 var y_boost: float
+var delta_height: float
+
 
 
 func _physics_process(delta: float) -> void:
@@ -31,8 +34,22 @@ func _physics_process(delta: float) -> void:
 			
 		y_boost= lerp(y_boost, 0.0, delta)
 
+	update_climb_speed()
+	
+	delta_height= (current_climb_speed + y_boost) * delta
+
+
+func update_climb_speed():
+	current_climb_speed= 0
+	if Input.is_action_pressed("ui_up"):
+		current_climb_speed= climb_speed
+
 
 func jump():
-	jump_dir= 1 if side == PlayerSide.LEFT else -1
+	if side == PlayerSide.NONE:
+		jump_dir= jump_dir * -1
+	else:
+		jump_dir= 1 if side == PlayerSide.LEFT else -1
+	
 	side= PlayerSide.NONE
 	y_boost= jump_boost

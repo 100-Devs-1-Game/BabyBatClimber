@@ -35,7 +35,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	delta_height= (player.climb_speed + player.y_boost) * delta
+	delta_height= player.delta_height
 	height+= delta_height
 	
 	for obj in level_objects:
