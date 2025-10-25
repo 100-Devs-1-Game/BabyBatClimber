@@ -4,3 +4,4 @@
 
 [resource]
 shader = ExtResource("1_wutx5")
+shader_parameter/height = 0.0
