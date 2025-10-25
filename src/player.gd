@@ -21,7 +21,7 @@ var delta_height: float
 func _physics_process(delta: float) -> void:
 	if side != PlayerSide.NONE:
 		y_boost= 0
-		if Input.is_action_just_pressed("ui_select"):
+		if Input.is_action_just_pressed("jump"):
 			jump()
 	else:
 		var jump_delta: float= jump_dir * horizontal_speed
@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 
 func update_climb_speed():
 	current_climb_speed= 0
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("climb"):
 		current_climb_speed= climb_speed
 
 
