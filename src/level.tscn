@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b603tnllthddv"]
+[gd_scene load_steps=7 format=3 uid="uid://b603tnllthddv"]
 
 [ext_resource type="Script" uid="uid://cev76inr16fwj" path="res://level.gd" id="1_u52ul"]
 [ext_resource type="Material" uid="uid://bbuvkw80wegb5" path="res://shader/level_side_shader_material.tres" id="2_8cye3"]
 [ext_resource type="Texture2D" uid="uid://bhs8j3plku7g3" path="res://assets/art/fixed/level_side.png" id="2_i2t4f"]
+[ext_resource type="Script" uid="uid://s85m62atbddd" path="res://sandbox.gd" id="3_1ainy"]
 [ext_resource type="PackedScene" uid="uid://bybibjaxh6r72" path="res://player.tscn" id="4_f2txt"]
 [ext_resource type="PackedScene" uid="uid://jtdbnlpdoalk" path="res://background/background.tscn" id="5_1ainy"]
 
@@ -10,6 +11,9 @@
 script = ExtResource("1_u52ul")
 width = 600.0
 level_side_shader = ExtResource("2_8cye3")
+
+[node name="Sandbox" type="Node" parent="."]
+script = ExtResource("3_1ainy")
 
 [node name="Right Sprite" type="Sprite2D" parent="."]
 texture_repeat = 2

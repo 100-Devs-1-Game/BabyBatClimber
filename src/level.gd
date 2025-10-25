@@ -16,11 +16,6 @@ var delta_height: float
 func _ready() -> void:
 	player.position= Vector2(1920 / 2 + width / 2 - player.width / 2, 1080 * 0.8)
 
-	var mushroom= preload("res://objects/resources/mushroom_definition.tres")
-	add_level_object(mushroom, 0, false)
-	add_level_object(mushroom, -300, true)
-	add_level_object(mushroom, -600, false)
-
 
 func _physics_process(delta: float) -> void:
 	delta_height= player.delta_height
