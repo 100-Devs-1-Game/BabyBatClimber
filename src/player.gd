@@ -9,6 +9,7 @@ enum PlayerSide { NONE, LEFT, RIGHT }
 @export var jump_boost: float= 100.0
 
 @onready var level: Level= get_parent()
+@onready var kill_area_detection: Area2D = $"Kill Area Detection"
 
 var side: PlayerSide= PlayerSide.RIGHT
 var current_climb_speed: float
@@ -41,7 +42,7 @@ func _physics_process(delta: float) -> void:
 
 func update_climb_speed():
 	current_climb_speed= 0
-	if Input.is_action_pressed("climb"):
+	if Input.is_action_pressed("climb") and can_climb():
 		current_climb_speed= climb_speed
 
 
@@ -57,3 +58,11 @@ func jump():
 
 func kill():
 	get_tree().quit()
+
+
+func can_climb()-> bool:
+	if side == PlayerSide.NONE:
+		return false
+	if kill_area_detection.has_overlapping_areas():
+		return false
+	return true

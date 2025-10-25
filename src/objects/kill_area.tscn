@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bg0m2w0t1ddfo" path="res://objects/kill_area.gd" id="1_lgy6w"]
 
 [node name="Kill Area" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_lgy6w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
