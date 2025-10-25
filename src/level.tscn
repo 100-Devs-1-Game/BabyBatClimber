@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://b603tnllthddv"]
 
 [ext_resource type="Script" uid="uid://cev76inr16fwj" path="res://level.gd" id="1_u52ul"]
-[ext_resource type="Material" uid="uid://bbuvkw80wegb5" path="res://level_side_shader_material.tres" id="2_8cye3"]
+[ext_resource type="Material" uid="uid://bbuvkw80wegb5" path="res://shader/level_side_shader_material.tres" id="2_8cye3"]
 [ext_resource type="Texture2D" uid="uid://bhs8j3plku7g3" path="res://assets/art/fixed/level_side.png" id="2_i2t4f"]
 [ext_resource type="PackedScene" uid="uid://bybibjaxh6r72" path="res://player.tscn" id="4_f2txt"]
-[ext_resource type="PackedScene" uid="uid://jtdbnlpdoalk" path="res://background.tscn" id="5_1ainy"]
+[ext_resource type="PackedScene" uid="uid://jtdbnlpdoalk" path="res://background/background.tscn" id="5_1ainy"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_u52ul")
@@ -25,5 +25,7 @@ texture = ExtResource("2_i2t4f")
 flip_h = true
 
 [node name="Player" parent="." instance=ExtResource("4_f2txt")]
+
+[node name="Objects" type="Node2D" parent="."]
 
 [node name="Background" parent="." instance=ExtResource("5_1ainy")]
