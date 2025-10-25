@@ -53,3 +53,7 @@ func jump():
 	
 	side= PlayerSide.NONE
 	y_boost= jump_boost
+
+
+func kill():
+	get_tree().quit()
