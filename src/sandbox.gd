@@ -10,7 +10,9 @@ func _ready() -> void:
 		return
 	await get_parent().ready
 	
-	var mushroom= preload("res://objects/resources/mushroom_definition.tres")
-	level.add_level_object(mushroom, 0, false)
+	var mushroom: LevelObjectDefinition= preload("res://objects/resources/mushroom_definition.tres")
+	var crosses: LevelObjectDefinition= preload("res://objects/resources/crosses_definition.tres")
+	level.add_level_object(crosses, 0, false)
+	level.add_level_object(crosses, -100, true)
 	level.add_level_object(mushroom, -300, true)
 	level.add_level_object(mushroom, -600, false)

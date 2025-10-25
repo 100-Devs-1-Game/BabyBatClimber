@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://yqyawu4n0ekw"]
+
+[ext_resource type="Texture2D" uid="uid://dd0fj2iv06qmm" path="res://assets/art/level_objects/crosses.png" id="1_8ewkb"]
+[ext_resource type="Script" uid="uid://bet0shbsj0fc1" path="res://objects/level_object.gd" id="1_ahj2b"]
+[ext_resource type="PackedScene" uid="uid://cjqe8mfxditgi" path="res://objects/kill_area.tscn" id="2_agih1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahj2b"]
+size = Vector2(20, 140)
+
+[node name="Crosses" type="Node2D"]
+script = ExtResource("1_ahj2b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(33, 7)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_8ewkb")
+
+[node name="Area2D" parent="." instance=ExtResource("2_agih1")]
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("RectangleShape2D_ahj2b")
+
+[editable path="Area2D"]
