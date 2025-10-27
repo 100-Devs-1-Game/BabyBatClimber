@@ -17,9 +17,17 @@ var jump_dir: int
 var y_boost: float
 var delta_height: float
 
+var controlling_object: LevelObject
+
 
 
 func _physics_process(delta: float) -> void:
+	delta_height= 0
+	
+	if controlling_object:
+		controlling_object.tick(self, delta)
+		return
+	
 	if side != PlayerSide.NONE:
 		y_boost= 0
 		if Input.is_action_just_pressed("jump"):
@@ -58,6 +66,15 @@ func jump():
 
 func kill():
 	get_tree().quit()
+
+
+func take_control(obj: LevelObject):
+	controlling_object= obj
+
+
+func relinquish_control(obj: LevelObject):
+	assert(controlling_object == obj)
+	
 
 
 func can_climb()-> bool:
