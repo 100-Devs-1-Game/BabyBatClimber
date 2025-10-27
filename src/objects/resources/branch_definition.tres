@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelObjectDefinition" load_steps=3 format=3 uid="uid://0s34hbgulsti"]
+
+[ext_resource type="PackedScene" uid="uid://c5jjvov1c7fs5" path="res://objects/scenes/branch_object.tscn" id="1_r52fk"]
+[ext_resource type="Script" uid="uid://11yiox5nhs5k" path="res://objects/level_object_definition.gd" id="1_uktr3"]
+
+[resource]
+script = ExtResource("1_uktr3")
+scene = ExtResource("1_r52fk")
+flip = true
+min_height = 0.0
+spawn_chance = 0.1
+metadata/_custom_type_script = "uid://11yiox5nhs5k"
