@@ -15,6 +15,6 @@ func _ready() -> void:
 	var branch: LevelObjectDefinition= preload("res://objects/resources/branch_definition.tres")
 
 	level.add_level_object(crosses, 0, false)
-	level.add_level_object(branch, -100, true)
+	level.add_level_object(branch, 200, true)
 	level.add_level_object(mushroom, -300, true)
 	level.add_level_object(mushroom, -600, false)
