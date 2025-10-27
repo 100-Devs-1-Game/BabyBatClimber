@@ -5,14 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://cjqe8mfxditgi" path="res://objects/kill_area.tscn" id="2_agih1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ahj2b"]
-size = Vector2(20, 140)
+size = Vector2(20, 170)
 
 [node name="Crosses" type="Node2D"]
 script = ExtResource("1_ahj2b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(33, 7)
-scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_8ewkb")
 
 [node name="Area2D" parent="." instance=ExtResource("2_agih1")]
