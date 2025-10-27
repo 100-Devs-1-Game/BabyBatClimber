@@ -11,7 +11,19 @@ enum PlayerSide { NONE, LEFT, RIGHT }
 @onready var level: Level= get_parent()
 @onready var kill_area_detection: Area2D = $"Kill Area Detection"
 
-var side: PlayerSide= PlayerSide.RIGHT
+@onready var model: Node2D = %Model
+@onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
+@onready var animated_sprite_behind: AnimatedSprite2D = %"AnimatedSprite2D Behind"
+
+
+var side: PlayerSide= PlayerSide.RIGHT:
+	set(s):
+		side= s
+		if side == PlayerSide.NONE:
+			return
+		animated_sprite.play("climb")
+		model.scale.x= 1 if side == PlayerSide.LEFT else -1
+		
 var current_climb_speed: float
 var jump_dir: int
 var y_boost: float
@@ -32,6 +44,12 @@ func _physics_process(delta: float) -> void:
 		y_boost= 0
 		if Input.is_action_just_pressed("jump"):
 			jump()
+		else:
+			if current_climb_speed > 0 and not animated_sprite.is_playing():
+				animated_sprite.play("climb")
+			elif is_zero_approx(current_climb_speed) and animated_sprite.is_playing():
+				animated_sprite.stop()
+				
 	else:
 		var jump_delta: float= jump_dir * horizontal_speed
 		position.x+= jump_delta * delta
@@ -59,6 +77,8 @@ func jump():
 		jump_dir= jump_dir * -1
 	else:
 		jump_dir= 1 if side == PlayerSide.LEFT else -1
+	
+	animated_sprite.play("jump")
 	
 	side= PlayerSide.NONE
 	y_boost= jump_boost

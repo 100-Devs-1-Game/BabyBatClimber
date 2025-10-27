@@ -1,6 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://bybibjaxh6r72"]
+[gd_scene load_steps=26 format=3 uid="uid://bybibjaxh6r72"]
 
 [ext_resource type="Script" uid="uid://d4mud50cb15su" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://cd1l33wstkh2o" path="res://assets/art/player/climbing/00.png" id="2_606se"]
+[ext_resource type="Texture2D" uid="uid://blvhlbf4m0yyi" path="res://assets/art/player/climbing/01.png" id="3_u1c27"]
+[ext_resource type="Texture2D" uid="uid://8vbv2wiu513f" path="res://assets/art/player/climbing/02.png" id="4_op7ga"]
+[ext_resource type="Texture2D" uid="uid://8cfixd6075k4" path="res://assets/art/player/climbing/03.png" id="5_q13i1"]
+[ext_resource type="Texture2D" uid="uid://dmcjs0i8hceh4" path="res://assets/art/player/climbing/04.png" id="6_pylmc"]
+[ext_resource type="Texture2D" uid="uid://b6ruomu8f64ek" path="res://assets/art/player/climbing/05.png" id="7_pbfsw"]
+[ext_resource type="Texture2D" uid="uid://cqnjm8twy2yux" path="res://assets/art/player/climbing/06.png" id="8_5tmop"]
+[ext_resource type="Texture2D" uid="uid://dm5clje30ps7l" path="res://assets/art/player/climbing/back_leg/000.png" id="9_7ahtn"]
+[ext_resource type="Texture2D" uid="uid://mfqt5yavodjo" path="res://assets/art/player/climbing/back_leg/001.png" id="10_7lmhl"]
+[ext_resource type="Texture2D" uid="uid://cm4pfhen2gx2h" path="res://assets/art/player/jump/01.png" id="10_dx0e4"]
+[ext_resource type="Texture2D" uid="uid://b5xmn4wqn7015" path="res://assets/art/player/climbing/back_leg/002.png" id="11_dx0e4"]
+[ext_resource type="Texture2D" uid="uid://b58n63hoxp5l1" path="res://assets/art/player/jump/02.png" id="11_jm5j8"]
+[ext_resource type="Texture2D" uid="uid://cca6mrdalil1d" path="res://assets/art/player/jump/03.png" id="12_7hik5"]
+[ext_resource type="Texture2D" uid="uid://dlbrbaraxfac7" path="res://assets/art/player/climbing/back_leg/003.png" id="12_jm5j8"]
+[ext_resource type="Texture2D" uid="uid://bi8x47mfkpku" path="res://assets/art/player/climbing/back_leg/004.png" id="13_7hik5"]
+[ext_resource type="Texture2D" uid="uid://cyfak8tl3iht6" path="res://assets/art/player/jump/04.png" id="13_qtqh7"]
+[ext_resource type="Texture2D" uid="uid://b6461wdja2q8a" path="res://assets/art/player/jump/05.png" id="14_2wuci"]
+[ext_resource type="Texture2D" uid="uid://fd64t0kjfcek" path="res://assets/art/player/climbing/back_leg/005.png" id="14_qtqh7"]
+[ext_resource type="Texture2D" uid="uid://bhpw4yad24p6m" path="res://assets/art/player/climbing/back_leg/006.png" id="15_2wuci"]
+[ext_resource type="Texture2D" uid="uid://dytwybnn7qfdj" path="res://assets/art/player/jump/06.png" id="15_iruf7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oi3di"]
 radius = 30.0
@@ -8,6 +28,87 @@ height = 150.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
 size = Vector2(60, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iruf7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_606se")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_u1c27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_op7ga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q13i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pylmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pbfsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5tmop")
+}],
+"loop": true,
+"name": &"climb",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_dx0e4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jm5j8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7hik5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_qtqh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2wuci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_iruf7")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j5n4i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_7ahtn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7lmhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_dx0e4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jm5j8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7hik5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qtqh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2wuci")
+}],
+"loop": true,
+"name": &"climb",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_4flbx")
@@ -24,3 +125,21 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Kill Area Detection"]
 position = Vector2(0, -106)
 shape = SubResource("RectangleShape2D_4flbx")
+
+[node name="Model" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Model"]
+unique_name_in_owner = true
+z_index = 1
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_iruf7")
+animation = &"jump"
+
+[node name="AnimatedSprite2D Behind" type="AnimatedSprite2D" parent="Model"]
+unique_name_in_owner = true
+visible = false
+z_index = -1
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_j5n4i")
+animation = &"climb"
