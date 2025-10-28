@@ -94,7 +94,7 @@ func take_control(obj: LevelObject):
 
 func relinquish_control(obj: LevelObject):
 	assert(controlling_object == obj)
-	
+	controlling_object= null
 
 
 func can_climb()-> bool:
