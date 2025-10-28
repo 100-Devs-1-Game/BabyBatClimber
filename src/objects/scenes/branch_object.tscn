@@ -1,7 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5jjvov1c7fs5"]
+[gd_scene load_steps=6 format=3 uid="uid://c5jjvov1c7fs5"]
 
 [ext_resource type="Script" uid="uid://fyc7kgkbdqq0" path="res://objects/scenes/branch_object.gd" id="1_2glmg"]
 [ext_resource type="Texture2D" uid="uid://cw3rbr3slfjn7" path="res://assets/art/level_objects/branch.png" id="2_4hbeo"]
+[ext_resource type="Texture2D" uid="uid://drn4d08dh5rbk" path="res://assets/art/level_objects/branch_bent.png" id="3_4hbeo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dj4xw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4hbeo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4hbeo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dj4xw"]
 size = Vector2(280, 30)
@@ -11,9 +26,9 @@ script = ExtResource("1_2glmg")
 aim_height_steps = Array[int]([150, 300, 500])
 aim_time_steps = 0.5
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-136, 9)
-texture = ExtResource("2_4hbeo")
+sprite_frames = SubResource("SpriteFrames_dj4xw")
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -27,7 +27,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func tick(player: Player, delta: float):
 	match state:
 		PlayerState.MOVING:
-			var dir: int= sign(move_target.position.x - player.position.x)
+			var dir: int= sign(move_target.global_position.x - player.position.x)
 			var prev_pos_x: float= player.position.x
 			player.position.x+= dir * player_move_speed * delta
 			
