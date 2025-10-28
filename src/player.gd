@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 enum PlayerSide { NONE, LEFT, RIGHT }
+enum State { GETTING_UP, PLAYING }
 
 @export var width: float= 30
 @export var climb_speed: float= 100
@@ -24,6 +25,7 @@ var side: PlayerSide= PlayerSide.RIGHT:
 		animated_sprite.play("climb")
 		model.scale.x= 1 if side == PlayerSide.LEFT else -1
 		
+var state:= State.GETTING_UP
 var current_climb_speed: float
 var jump_dir: int
 var y_boost: float
@@ -34,6 +36,17 @@ var controlling_object: LevelObject
 
 
 func _physics_process(delta: float) -> void:
+	match state:
+		State.GETTING_UP:
+			if not animated_sprite.is_playing():
+				var dir:= roundi(Input.get_axis("left", "right"))
+				if dir != 0:
+					side= PlayerSide.RIGHT if dir < 0 else PlayerSide.LEFT
+					jump()
+					state= State.PLAYING
+			return
+		
+		
 	delta_height= 0
 	
 	if controlling_object:

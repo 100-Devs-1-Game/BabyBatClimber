@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bybibjaxh6r72"]
+[gd_scene load_steps=37 format=3 uid="uid://bybibjaxh6r72"]
 
 [ext_resource type="Script" uid="uid://d4mud50cb15su" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://cd1l33wstkh2o" path="res://assets/art/player/climbing/00.png" id="2_606se"]
@@ -9,18 +9,29 @@
 [ext_resource type="Texture2D" uid="uid://b6ruomu8f64ek" path="res://assets/art/player/climbing/05.png" id="7_pbfsw"]
 [ext_resource type="Texture2D" uid="uid://cqnjm8twy2yux" path="res://assets/art/player/climbing/06.png" id="8_5tmop"]
 [ext_resource type="Texture2D" uid="uid://dm5clje30ps7l" path="res://assets/art/player/climbing/back_leg/000.png" id="9_7ahtn"]
+[ext_resource type="Texture2D" uid="uid://bovcjjjbrak11" path="res://assets/art/player/getting_up/000.png" id="9_efrwb"]
 [ext_resource type="Texture2D" uid="uid://mfqt5yavodjo" path="res://assets/art/player/climbing/back_leg/001.png" id="10_7lmhl"]
 [ext_resource type="Texture2D" uid="uid://cm4pfhen2gx2h" path="res://assets/art/player/jump/01.png" id="10_dx0e4"]
+[ext_resource type="Texture2D" uid="uid://0bldscujeaks" path="res://assets/art/player/getting_up/001.png" id="10_hiqhm"]
 [ext_resource type="Texture2D" uid="uid://b5xmn4wqn7015" path="res://assets/art/player/climbing/back_leg/002.png" id="11_dx0e4"]
 [ext_resource type="Texture2D" uid="uid://b58n63hoxp5l1" path="res://assets/art/player/jump/02.png" id="11_jm5j8"]
+[ext_resource type="Texture2D" uid="uid://c2luiyvc2gmop" path="res://assets/art/player/getting_up/002.png" id="11_tkwlq"]
 [ext_resource type="Texture2D" uid="uid://cca6mrdalil1d" path="res://assets/art/player/jump/03.png" id="12_7hik5"]
+[ext_resource type="Texture2D" uid="uid://c1evd25m710xp" path="res://assets/art/player/getting_up/003.png" id="12_hl5qd"]
 [ext_resource type="Texture2D" uid="uid://dlbrbaraxfac7" path="res://assets/art/player/climbing/back_leg/003.png" id="12_jm5j8"]
 [ext_resource type="Texture2D" uid="uid://bi8x47mfkpku" path="res://assets/art/player/climbing/back_leg/004.png" id="13_7hik5"]
+[ext_resource type="Texture2D" uid="uid://bn3u40xs2syir" path="res://assets/art/player/getting_up/004.png" id="13_ek41f"]
 [ext_resource type="Texture2D" uid="uid://cyfak8tl3iht6" path="res://assets/art/player/jump/04.png" id="13_qtqh7"]
 [ext_resource type="Texture2D" uid="uid://b6461wdja2q8a" path="res://assets/art/player/jump/05.png" id="14_2wuci"]
+[ext_resource type="Texture2D" uid="uid://bpe78u56u7ojy" path="res://assets/art/player/getting_up/005.png" id="14_khis8"]
 [ext_resource type="Texture2D" uid="uid://fd64t0kjfcek" path="res://assets/art/player/climbing/back_leg/005.png" id="14_qtqh7"]
 [ext_resource type="Texture2D" uid="uid://bhpw4yad24p6m" path="res://assets/art/player/climbing/back_leg/006.png" id="15_2wuci"]
+[ext_resource type="Texture2D" uid="uid://cooeukuhvs8d7" path="res://assets/art/player/getting_up/006.png" id="15_b88wv"]
 [ext_resource type="Texture2D" uid="uid://dytwybnn7qfdj" path="res://assets/art/player/jump/06.png" id="15_iruf7"]
+[ext_resource type="Texture2D" uid="uid://db8jlky1qqpxv" path="res://assets/art/player/getting_up/007.png" id="16_pgbbb"]
+[ext_resource type="Texture2D" uid="uid://c12cw3gixphch" path="res://assets/art/player/getting_up/008.png" id="17_331ug"]
+[ext_resource type="Texture2D" uid="uid://cydmxjr8nggwh" path="res://assets/art/player/getting_up/009.png" id="18_ny14h"]
+[ext_resource type="Texture2D" uid="uid://d33kb3uwmydwu" path="res://assets/art/player/getting_up/010.png" id="19_ibah8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oi3di"]
 radius = 30.0
@@ -56,6 +67,44 @@ animations = [{
 "loop": true,
 "name": &"climb",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_efrwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_hiqhm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tkwlq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hl5qd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ek41f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_khis8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_b88wv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_pgbbb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_331ug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ny14h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ibah8")
+}],
+"loop": false,
+"name": &"get_up",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -134,7 +183,8 @@ unique_name_in_owner = true
 z_index = 1
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_iruf7")
-animation = &"jump"
+animation = &"get_up"
+autoplay = "get_up"
 
 [node name="AnimatedSprite2D Behind" type="AnimatedSprite2D" parent="Model"]
 unique_name_in_owner = true

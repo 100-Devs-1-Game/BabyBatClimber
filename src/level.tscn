@@ -48,6 +48,7 @@ texture = ExtResource("2_i2t4f")
 flip_h = true
 
 [node name="Player" parent="." instance=ExtResource("4_f2txt")]
+position = Vector2(962, 971)
 
 [node name="Objects" type="Node2D" parent="."]
 

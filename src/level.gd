@@ -12,9 +12,9 @@ var height: float= 0
 var delta_height: float
 
 
-
-func _ready() -> void:
-	player.position= Vector2(1920 / 2 + width / 2 - player.width / 2, 1080 * 0.8)
+#
+#func _ready() -> void:
+	#player.position= Vector2(1920 / 2 + width / 2 - player.width / 2, 1080 * 0.8)
 
 
 func _physics_process(delta: float) -> void:
