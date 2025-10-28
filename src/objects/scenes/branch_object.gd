@@ -39,11 +39,19 @@ func tick(player: Player, delta: float):
 				state= PlayerState.AIMING
 				aim_time= 0
 		PlayerState.AIMING:
+			var step: int= clampi(aim_time / aim_time_steps, 0, aim_height_steps.size() - 1)
+
 			if Input.is_action_just_released("pull"):
-				state= PlayerState.IDLE
+				var dir:= roundi(Input.get_axis("left", "right"))
+				if dir != 0:
+					player.side= Player.PlayerSide.RIGHT if dir < 0 else Player.PlayerSide.LEFT
+					player.jump()
+					player.y_boost*= step + 1
+					player.relinquish_control(self)
+				else:
+					state= PlayerState.IDLE
 				return
 			aim_time+= delta
-			var step: int= clampi(aim_time / aim_time_steps, 0, aim_height_steps.size() - 1)
 			aim_height= aim_height_steps[step]
 
 			var dir:= 0
