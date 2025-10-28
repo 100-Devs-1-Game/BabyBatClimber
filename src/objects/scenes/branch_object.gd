@@ -35,13 +35,13 @@ func tick(player: Player, delta: float):
 				player.position.x= move_target.global_position.x
 				state= PlayerState.IDLE
 		PlayerState.IDLE:
-			if Input.is_action_just_pressed("pull"):
+			if Input.is_action_just_pressed("jump"):
 				state= PlayerState.AIMING
 				aim_time= 0
 		PlayerState.AIMING:
 			var step: int= clampi(aim_time / aim_time_steps, 0, aim_height_steps.size() - 1)
 
-			if Input.is_action_just_released("pull"):
+			if Input.is_action_just_released("jump"):
 				var dir:= roundi(Input.get_axis("left", "right"))
 				if dir != 0:
 					player.side= Player.PlayerSide.RIGHT if dir < 0 else Player.PlayerSide.LEFT
