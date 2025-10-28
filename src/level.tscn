@@ -37,13 +37,13 @@ script = ExtResource("3_1ainy")
 [node name="Right Sprite" type="Sprite2D" parent="."]
 texture_repeat = 2
 material = ExtResource("2_8cye3")
-position = Vector2(460, 474)
+position = Vector2(543, 471)
 texture = ExtResource("2_i2t4f")
 
 [node name="Left Sprite" type="Sprite2D" parent="."]
 texture_repeat = 2
 material = ExtResource("2_8cye3")
-position = Vector2(1460, 474)
+position = Vector2(1377, 474)
 texture = ExtResource("2_i2t4f")
 flip_h = true
 
@@ -55,6 +55,13 @@ flip_h = true
 layer = -1
 script = ExtResource("6_2orkt")
 global_scroll_factor = 3.0
+
+[node name="ColorRect Level Width" type="ColorRect" parent="Background"]
+visible = false
+z_index = 4
+offset_left = 660.0
+offset_right = 1260.0
+offset_bottom = 40.0
 
 [node name="Gradient" type="TextureRect" parent="Background"]
 offset_left = 599.0
@@ -161,13 +168,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -279.0
-offset_top = -631.0
-offset_right = 121.0
-offset_bottom = -185.0
+offset_left = -321.0
+offset_top = -761.0
+offset_right = 79.0
+offset_bottom = -315.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(1.4, 1.4)
+scale = Vector2(1.69, 1.69)
 texture = ExtResource("10_v5j5c")
 stretch_mode = 2
 script = ExtResource("8_8b0r0")
