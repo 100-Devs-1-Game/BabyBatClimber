@@ -9,7 +9,8 @@ var layers: Array[BackgroundLayer]
 
 func _ready() -> void:
 	for child in get_children():
-		layers.append(child)
+		if child is BackgroundLayer:
+			layers.append(child)
 
 
 func _physics_process(delta: float) -> void:

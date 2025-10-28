@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b603tnllthddv"]
+[gd_scene load_steps=17 format=3 uid="uid://b603tnllthddv"]
 
 [ext_resource type="Script" uid="uid://cev76inr16fwj" path="res://level.gd" id="1_u52ul"]
 [ext_resource type="Material" uid="uid://bbuvkw80wegb5" path="res://shader/level_side_shader_material.tres" id="2_8cye3"]
@@ -6,11 +6,25 @@
 [ext_resource type="Script" uid="uid://s85m62atbddd" path="res://sandbox.gd" id="3_1ainy"]
 [ext_resource type="PackedScene" uid="uid://bybibjaxh6r72" path="res://player.tscn" id="4_f2txt"]
 [ext_resource type="Script" uid="uid://c7wrmk0rya284" path="res://background/background.gd" id="6_2orkt"]
+[ext_resource type="Texture2D" uid="uid://dovnts24fybiv" path="res://assets/art/background/far_back.png" id="7_8b0r0"]
 [ext_resource type="Texture2D" uid="uid://dsmjevktd34xw" path="res://assets/art/background/tree_1.png" id="7_aicyk"]
 [ext_resource type="Script" uid="uid://7cnpnuewq2tx" path="res://background/background_layer.gd" id="8_8b0r0"]
 [ext_resource type="Texture2D" uid="uid://du7ncal7r3lqw" path="res://assets/art/background/tree_2.png" id="9_h6smj"]
 [ext_resource type="Texture2D" uid="uid://0vgqravd3mqi" path="res://assets/art/background/gate.png" id="10_v5j5c"]
 [ext_resource type="Texture2D" uid="uid://c6fjh53wd845s" path="res://assets/art/background/floor.png" id="11_5pxul"]
+
+[sub_resource type="Gradient" id="Gradient_h6smj"]
+colors = PackedColorArray(0.313211, 0.522067, 1, 1, 0, 0.129412, 0.815686, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v5j5c"]
+gradient = SubResource("Gradient_h6smj")
+
+[sub_resource type="Gradient" id="Gradient_5pxul"]
+offsets = PackedFloat32Array(0, 0.666667)
+colors = PackedColorArray(0.000693898, 0.000693898, 0.000693897, 1, 0.157274, 0.157274, 0.157274, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fedht"]
+gradient = SubResource("Gradient_5pxul")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_u52ul")
@@ -41,6 +55,31 @@ flip_h = true
 layer = -1
 script = ExtResource("6_2orkt")
 global_scroll_factor = 3.0
+
+[node name="Gradient" type="TextureRect" parent="Background"]
+offset_left = 599.0
+offset_top = 976.0
+offset_right = 1599.0
+offset_bottom = 1676.0
+rotation = -1.5708
+texture = SubResource("GradientTexture1D_v5j5c")
+
+[node name="Floor" type="TextureRect" parent="Background"]
+offset_left = 611.0
+offset_top = 1114.0
+offset_right = 867.0
+offset_bottom = 1814.0
+rotation = -1.5708
+texture = SubResource("GradientTexture1D_fedht")
+
+[node name="Far Back" type="TextureRect" parent="Background"]
+modulate = Color(0.297093, 0.297093, 0.297093, 1)
+offset_left = 545.0
+offset_top = 239.0
+offset_right = 945.0
+offset_bottom = 685.0
+scale = Vector2(2.025, 2.025)
+texture = ExtResource("7_8b0r0")
 
 [node name="Tree3" type="TextureRect" parent="Background"]
 modulate = Color(0.386757, 0.386757, 0.386757, 1)
@@ -134,7 +173,7 @@ stretch_mode = 2
 script = ExtResource("8_8b0r0")
 scroll_speed = 0.1
 
-[node name="Floor" type="TextureRect" parent="Background"]
+[node name="Graves" type="TextureRect" parent="Background"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
