@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://b603tnllthddv"]
 
-[ext_resource type="Script" uid="uid://cev76inr16fwj" path="res://level.gd" id="1_u52ul"]
+[ext_resource type="Script" uid="uid://cev76inr16fwj" path="res://level/level.gd" id="1_u52ul"]
 [ext_resource type="Material" uid="uid://bbuvkw80wegb5" path="res://shader/level_side_shader_material.tres" id="2_8cye3"]
 [ext_resource type="Texture2D" uid="uid://bhs8j3plku7g3" path="res://assets/art/fixed/level_side.png" id="2_i2t4f"]
 [ext_resource type="Script" uid="uid://s85m62atbddd" path="res://sandbox.gd" id="3_1ainy"]
