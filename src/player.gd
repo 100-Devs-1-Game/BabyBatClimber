@@ -33,6 +33,8 @@ var delta_height: float
 
 var controlling_object: LevelObject
 
+var score: int
+
 
 
 func _physics_process(delta: float) -> void:
