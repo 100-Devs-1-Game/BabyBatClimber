@@ -1,6 +1,6 @@
 extends LevelObject
 
-enum PlayerState { MOVING, IDLE, AIMING }
+enum PlayerState { MOVING, IDLE, AIMING, JUMPING, LAUNCHING }
 
 @export var player_move_speed: float= 200.0
 @export var player_offsets: Array[int]
@@ -17,6 +17,8 @@ enum PlayerState { MOVING, IDLE, AIMING }
 var state: PlayerState= PlayerState.MOVING
 var aim_time: float
 var aim_height: float
+var current_aim_step: int
+
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -44,24 +46,25 @@ func tick(player: Player, delta: float):
 				aim_time= 0
 
 		PlayerState.AIMING:
-			var step: int= clampi(aim_time / aim_time_steps, 0, aim_height_steps.size() - 1)
+			current_aim_step= clampi(aim_time / aim_time_steps, 0, aim_height_steps.size() - 1)
 
 			if Input.is_action_just_released("jump"):
 				var dir:= roundi(Input.get_axis("left", "right"))
 				if dir != 0:
 					area.monitoring= false
-					player.rotation= 0
 					player.side= Player.PlayerSide.RIGHT if dir < 0 else Player.PlayerSide.LEFT
-					player.jump()
-					player.y_boost*= step + 1
-					player.relinquish_control(self)
+					
+					var tween:= get_tree().create_tween()
+					tween.tween_property(player, "position:y", position.y + player_offsets[0], 0.1)
+					tween.tween_callback(func(): state= PlayerState.JUMPING)
+					state= PlayerState.LAUNCHING
 				else:
 					state= PlayerState.IDLE
 				return
 			aim_time+= delta
-			aim_height= aim_height_steps[step]
+			aim_height= aim_height_steps[current_aim_step]
 			
-			player.position.y= position.y + player_offsets[step]
+			player.position.y= position.y + player_offsets[current_aim_step]
 			
 			var dir:= 0
 			
@@ -78,4 +81,13 @@ func tick(player: Player, delta: float):
 			#if aim.visible:
 				#var x: float= get_level().get_right_side() if dir > 0 else get_level().get_left_side()
 				#aim.global_position= Vector2(x, global_position.y - aim_height)
+
+		PlayerState.LAUNCHING:
+			pass
+		PlayerState.JUMPING:
+			player.rotation= 0
+			player.jump()
+			player.y_boost*= current_aim_step + 1
+			player.relinquish_control(self)
+
 			
