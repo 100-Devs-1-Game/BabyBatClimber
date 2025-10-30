@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b603tnllthddv"]
+[gd_scene load_steps=26 format=3 uid="uid://b603tnllthddv"]
 
 [ext_resource type="Script" uid="uid://cev76inr16fwj" path="res://level/level.gd" id="1_u52ul"]
 [ext_resource type="Material" uid="uid://bbuvkw80wegb5" path="res://shader/level_side_shader_material.tres" id="2_8cye3"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://7cnpnuewq2tx" path="res://background/background_layer.gd" id="8_8b0r0"]
 [ext_resource type="Resource" uid="uid://2q6onabqfifn" path="res://objects/resources/mushroom_definition.tres" id="8_b7y0n"]
 [ext_resource type="Texture2D" uid="uid://du7ncal7r3lqw" path="res://assets/art/background/tree_2.png" id="9_h6smj"]
+[ext_resource type="Resource" uid="uid://chhlpnp4fxkqp" path="res://objects/resources/owl_definition.tres" id="9_kdsbj"]
 [ext_resource type="PackedScene" uid="uid://d18nihbqmiox2" path="res://decorations/decoration1.tscn" id="9_o0wo3"]
 [ext_resource type="PackedScene" uid="uid://bv1se05jbaeiv" path="res://decorations/decoration2.tscn" id="10_kdsbj"]
 [ext_resource type="Texture2D" uid="uid://0vgqravd3mqi" path="res://assets/art/background/gate.png" id="10_v5j5c"]
@@ -37,7 +38,7 @@ enabled = false
 [node name="LevelGenerator" type="Node" parent="."]
 script = ExtResource("4_m5ivw")
 step_size = 25.0
-objects = Array[ExtResource("5_sui6v")]([ExtResource("6_tv7ir"), ExtResource("7_kp5pi"), ExtResource("8_b7y0n")])
+objects = Array[ExtResource("5_sui6v")]([ExtResource("6_tv7ir"), ExtResource("7_kp5pi"), ExtResource("8_b7y0n"), ExtResource("9_kdsbj")])
 decorations = Array[PackedScene]([ExtResource("9_o0wo3"), ExtResource("10_kdsbj")])
 metadata/_custom_type_script = "uid://daqa47b43br8a"
 

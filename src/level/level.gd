@@ -30,10 +30,15 @@ func _physics_process(delta: float) -> void:
 
 func add_level_object(definition: LevelObjectDefinition, y: float, right: bool= true):
 	var obj: LevelObject= definition.scene.instantiate()
-	obj.position.x= get_right_side() if right else get_left_side() 
-	obj.position.y= y
+	if definition.has_custom_spawner:
+		obj.spawn(y)
+	else:
+		obj.position.x= get_right_side() if right else get_left_side() 
+		obj.position.y= y
+
 	if not right and definition.flip:
 		obj.scale.x= -1
+
 	objects_node.add_child(obj)
 
 

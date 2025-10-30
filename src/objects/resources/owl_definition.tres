@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LevelObjectDefinition" load_steps=3 format=3 uid="uid://chhlpnp4fxkqp"]
+
+[ext_resource type="PackedScene" uid="uid://dg6td4s6t84xb" path="res://objects/scenes/owl.tscn" id="1_i68x2"]
+[ext_resource type="Script" uid="uid://11yiox5nhs5k" path="res://objects/level_object_definition.gd" id="1_ye7be"]
+
+[resource]
+script = ExtResource("1_ye7be")
+scene = ExtResource("1_i68x2")
+flip = false
+min_height = -2500.0
+spawn_chance = 0.05
+size = 0.0
+has_custom_spawner = false
+metadata/_custom_type_script = "uid://11yiox5nhs5k"

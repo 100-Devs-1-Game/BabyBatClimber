@@ -37,7 +37,7 @@ script = ExtResource("1_4o2av")
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_bw51g")
 autoplay = "default"
-frame_progress = 0.406483
+frame_progress = 0.3331
 
 [node name="Kill Area" parent="." instance=ExtResource("6_325lo")]
 
