@@ -7,7 +7,8 @@
 script = ExtResource("1_wqthp")
 scene = ExtResource("1_dv5hq")
 flip = true
-min_height = 0.0
+min_height = -1500.0
 spawn_chance = 10.0
 size = 200.0
+has_custom_spawner = false
 metadata/_custom_type_script = "uid://11yiox5nhs5k"
