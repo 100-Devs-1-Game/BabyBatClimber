@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 enum PlayerSide { NONE, LEFT, RIGHT }
-enum State { GETTING_UP, PLAYING }
+enum State { GETTING_UP, PLAYING, DEAD }
 
 @export var width: float= 30
 @export var climb_speed: float= 100
@@ -30,6 +30,7 @@ var current_climb_speed: float
 var jump_dir: int
 var y_boost: float
 var delta_height: float
+var dead_velocity: Vector2
 
 var controlling_object: LevelObject
 
@@ -38,18 +39,10 @@ var score: int
 
 
 func _physics_process(delta: float) -> void:
-	match state:
-		State.GETTING_UP:
-			if not animated_sprite.is_playing():
-				var dir:= roundi(Input.get_axis("left", "right"))
-				if dir != 0:
-					side= PlayerSide.RIGHT if dir < 0 else PlayerSide.LEFT
-					jump()
-					state= State.PLAYING
-			return
-		
-		
 	delta_height= 0
+
+	if handle_states(delta):
+		return
 	
 	if controlling_object:
 		controlling_object.tick(self, delta)
@@ -81,6 +74,25 @@ func _physics_process(delta: float) -> void:
 	delta_height= (current_climb_speed + y_boost) * delta
 
 
+func handle_states(delta: float)-> bool:
+	match state:
+		State.GETTING_UP:
+			if not animated_sprite.is_playing():
+				var dir:= roundi(Input.get_axis("left", "right"))
+				if dir != 0:
+					side= PlayerSide.RIGHT if dir < 0 else PlayerSide.LEFT
+					jump()
+					state= State.PLAYING
+			return true
+		State.DEAD:
+			dead_velocity.x*= 1 - delta
+			dead_velocity.y+= 1000 * delta
+			position+= dead_velocity * delta
+			return true
+
+	return false
+
+
 func update_climb_speed():
 	current_climb_speed= 0
 	if Input.is_action_pressed("climb") and can_climb():
@@ -102,7 +114,10 @@ func jump():
 
 
 func kill():
-	get_tree().quit()
+	state= State.DEAD
+	animated_sprite.play("fall")
+	var dir: float= -(position.x - 1920 / 2) / (level.width / 2)
+	dead_velocity= Vector2(dir * 1000, -100)
 
 
 func take_control(obj: LevelObject):

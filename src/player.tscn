@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bybibjaxh6r72"]
+[gd_scene load_steps=42 format=3 uid="uid://bybibjaxh6r72"]
 
 [ext_resource type="Script" uid="uid://d4mud50cb15su" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://cd1l33wstkh2o" path="res://assets/art/player/climbing/00.png" id="2_606se"]
@@ -10,13 +10,17 @@
 [ext_resource type="Texture2D" uid="uid://cqnjm8twy2yux" path="res://assets/art/player/climbing/06.png" id="8_5tmop"]
 [ext_resource type="Texture2D" uid="uid://dm5clje30ps7l" path="res://assets/art/player/climbing/back_leg/000.png" id="9_7ahtn"]
 [ext_resource type="Texture2D" uid="uid://bovcjjjbrak11" path="res://assets/art/player/getting_up/000.png" id="9_efrwb"]
+[ext_resource type="Texture2D" uid="uid://des6rgy8lwrdm" path="res://assets/art/player/fall/000.png" id="9_khis8"]
 [ext_resource type="Texture2D" uid="uid://mfqt5yavodjo" path="res://assets/art/player/climbing/back_leg/001.png" id="10_7lmhl"]
+[ext_resource type="Texture2D" uid="uid://seekhgdw4kqg" path="res://assets/art/player/fall/001.png" id="10_b88wv"]
 [ext_resource type="Texture2D" uid="uid://cm4pfhen2gx2h" path="res://assets/art/player/jump/01.png" id="10_dx0e4"]
 [ext_resource type="Texture2D" uid="uid://0bldscujeaks" path="res://assets/art/player/getting_up/001.png" id="10_hiqhm"]
 [ext_resource type="Texture2D" uid="uid://b5xmn4wqn7015" path="res://assets/art/player/climbing/back_leg/002.png" id="11_dx0e4"]
 [ext_resource type="Texture2D" uid="uid://b58n63hoxp5l1" path="res://assets/art/player/jump/02.png" id="11_jm5j8"]
+[ext_resource type="Texture2D" uid="uid://ccsxcixo5xrel" path="res://assets/art/player/fall/002.png" id="11_pgbbb"]
 [ext_resource type="Texture2D" uid="uid://c2luiyvc2gmop" path="res://assets/art/player/getting_up/002.png" id="11_tkwlq"]
 [ext_resource type="Texture2D" uid="uid://cca6mrdalil1d" path="res://assets/art/player/jump/03.png" id="12_7hik5"]
+[ext_resource type="Texture2D" uid="uid://cej5ye6ucjeyr" path="res://assets/art/player/fall/003.png" id="12_331ug"]
 [ext_resource type="Texture2D" uid="uid://c1evd25m710xp" path="res://assets/art/player/getting_up/003.png" id="12_hl5qd"]
 [ext_resource type="Texture2D" uid="uid://dlbrbaraxfac7" path="res://assets/art/player/climbing/back_leg/003.png" id="12_jm5j8"]
 [ext_resource type="Texture2D" uid="uid://bi8x47mfkpku" path="res://assets/art/player/climbing/back_leg/004.png" id="13_7hik5"]
@@ -68,6 +72,23 @@ animations = [{
 "loop": true,
 "name": &"climb",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_khis8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_b88wv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_pgbbb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_331ug")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -192,7 +213,7 @@ unique_name_in_owner = true
 z_index = 1
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_iruf7")
-animation = &"jump"
+animation = &"fall"
 autoplay = "get_up"
 
 [node name="AnimatedSprite2D Behind" type="AnimatedSprite2D" parent="Model"]
