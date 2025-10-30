@@ -193,7 +193,7 @@ animations = [{
 script = ExtResource("1_4flbx")
 climb_speed = 200.0
 horizontal_speed = 1000.0
-jump_boost = 700.0
+jump_boost = 850.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_oi3di")
