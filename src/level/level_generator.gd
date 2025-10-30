@@ -5,6 +5,7 @@ extends Node
 @export var step_size: float= 50
 @export var chance_per_step: float= 15.0
 @export var objects: Array[LevelObjectDefinition]
+@export var decorations: Array[PackedScene]
 
 @onready var level: Level= get_parent()
 
@@ -25,7 +26,15 @@ func generate(until_height: float):
 	
 	if abs(until_height - last_height) < 100:
 		return
-		 
+
+	var new_height: float= spawn_objects(until_height)
+	spawn_decorations(until_height)
+	last_height= new_height
+
+
+func spawn_objects(until_height: float)-> float:
+	var new_height: float= last_height
+	
 	var obj: LevelObjectDefinition
 	for height in range(last_height, until_height, -50):
 		left_blocked_for-= step_size
@@ -41,7 +50,14 @@ func generate(until_height: float):
 				level.add_level_object(obj, height, true)
 				right_blocked_for= obj.size
 		
-		last_height= height
+		new_height= height
+	return new_height
+
+
+func spawn_decorations(until_height: float):
+	for height in range(last_height, until_height, -385):
+		if chance100(25):
+			level.add_decoration(decorations.pick_random(), height, chance100(50))
 
 
 func get_random_obj(height: float)-> LevelObjectDefinition:
