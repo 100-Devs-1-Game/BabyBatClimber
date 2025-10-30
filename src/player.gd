@@ -115,6 +115,7 @@ func jump():
 
 func kill():
 	state= State.DEAD
+	collision_layer= 0
 	animated_sprite.play("fall")
 	var dir: float= -(position.x - 1920 / 2) / (level.width / 2)
 	dead_velocity= Vector2(dir * 1000, -100)
