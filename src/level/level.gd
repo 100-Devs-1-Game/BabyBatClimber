@@ -51,3 +51,7 @@ func get_left_side()-> float:
 
 func get_right_side()-> float:
 	return 1920 / 2 + width / 2
+
+
+func _on_update_level_timeout() -> void:
+	level_generator.generate(-height - 2000)

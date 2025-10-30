@@ -24,7 +24,7 @@ func generate(until_height: float):
 	if not enabled:
 		return
 	
-	if abs(until_height - last_height) < 100:
+	if abs(until_height - last_height) < 200:
 		return
 
 	var new_height: float= spawn_objects(until_height)
@@ -51,6 +51,7 @@ func spawn_objects(until_height: float)-> float:
 				right_blocked_for= obj.size
 		
 		new_height= height
+	
 	return new_height
 
 
