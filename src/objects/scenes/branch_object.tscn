@@ -23,6 +23,8 @@ size = Vector2(280, 30)
 
 [node name="BranchObject" type="Node2D"]
 script = ExtResource("1_2glmg")
+player_move_speed = 400.0
+player_offsets = Array[int]([50, 70, 90])
 aim_height_steps = Array[int]([150, 300, 500])
 aim_time_steps = 0.5
 
