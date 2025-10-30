@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Baby Bat Climber"
-run/main_scene="uid://b603tnllthddv"
+run/main_scene="uid://c44olbdouwv4i"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
