@@ -1,0 +1,334 @@
+[gd_scene load_steps=19 format=3 uid="uid://c44olbdouwv4i"]
+
+[ext_resource type="Texture2D" uid="uid://b4guv3alk2dha" path="res://assets/art/menu/000.png" id="1_e8qc1"]
+[ext_resource type="Script" uid="uid://bcl2f7bs8fe41" path="res://menus/title.gd" id="1_xyp27"]
+[ext_resource type="Texture2D" uid="uid://dovnts24fybiv" path="res://assets/art/background/far_back.png" id="2_73gom"]
+[ext_resource type="Texture2D" uid="uid://bqyltibyvqgc0" path="res://assets/art/menu/001.png" id="2_xyp27"]
+[ext_resource type="Texture2D" uid="uid://f2omlnqicve0" path="res://assets/art/menu/002.png" id="3_73gom"]
+[ext_resource type="Texture2D" uid="uid://dsmjevktd34xw" path="res://assets/art/background/tree_1.png" id="3_gvmy1"]
+[ext_resource type="Texture2D" uid="uid://ctueknud77mst" path="res://assets/art/menu/003.png" id="4_gvmy1"]
+[ext_resource type="Texture2D" uid="uid://ctck6kkmutkxx" path="res://assets/art/menu/004.png" id="5_louvd"]
+[ext_resource type="Texture2D" uid="uid://ddla5u1pf7gbj" path="res://assets/art/menu/005.png" id="6_pw7v8"]
+[ext_resource type="Texture2D" uid="uid://dlcb5hg7nqvno" path="res://assets/art/menu/006.png" id="7_lqjhu"]
+[ext_resource type="Texture2D" uid="uid://bw14303ctu373" path="res://assets/art/menu/007.png" id="8_xqeq7"]
+[ext_resource type="Texture2D" uid="uid://cqot5rbjg8vdk" path="res://assets/art/menu/008.png" id="9_ci4xf"]
+[ext_resource type="Texture2D" uid="uid://glwoej3ulgsv" path="res://assets/art/menu/009.png" id="10_bbbya"]
+[ext_resource type="Texture2D" uid="uid://c3f0coolkvrd6" path="res://assets/art/menu/010.png" id="11_l8r6s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvmy1"]
+bg_color = Color(0.403922, 0.219608, 0.415686, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.00784314, 0.00392157, 0.0117647, 1)
+
+[sub_resource type="Animation" id="Animation_73gom"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Build:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Build:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xyp27"]
+resource_name = "default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Build:skew")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0174533]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Build:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(16.54, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gvmy1"]
+_data = {
+&"RESET": SubResource("Animation_73gom"),
+&"default": SubResource("Animation_xyp27")
+}
+
+[node name="Title" type="Node2D" node_paths=PackedStringArray("start_button", "settings_button", "credits_button", "change_button", "score")]
+script = ExtResource("1_xyp27")
+start_button = NodePath("Menu/UI/Start")
+settings_button = NodePath("Menu/UI/Settings")
+credits_button = NodePath("Menu/UI/Credits")
+change_button = NodePath("Menu/UI/Change")
+score = NodePath("Menu/UI/Panel/HBoxContainer/Scorelbl")
+
+[node name="BG" type="Node2D" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="BG"]
+offset_left = -463.0
+offset_top = -548.0
+offset_right = 2360.0
+offset_bottom = 300.0
+color = Color(0, 0, 0.0823529, 1)
+
+[node name="ColorRect" type="ColorRect" parent="BG"]
+offset_left = -59.0
+offset_top = 506.0
+offset_right = 1956.0
+offset_bottom = 1335.0
+color = Color(0.177238, 0.203507, 0.273742, 1)
+
+[node name="FarBack" type="Sprite2D" parent="BG"]
+position = Vector2(141, 324)
+texture = ExtResource("2_73gom")
+
+[node name="FarBack2" type="Sprite2D" parent="BG"]
+position = Vector2(539, 324)
+texture = ExtResource("2_73gom")
+
+[node name="FarBack3" type="Sprite2D" parent="BG"]
+position = Vector2(929, 326)
+texture = ExtResource("2_73gom")
+
+[node name="FarBack4" type="Sprite2D" parent="BG"]
+position = Vector2(1298, 328)
+texture = ExtResource("2_73gom")
+
+[node name="FarBack5" type="Sprite2D" parent="BG"]
+position = Vector2(1692, 338)
+texture = ExtResource("2_73gom")
+
+[node name="FarBack6" type="Sprite2D" parent="BG"]
+position = Vector2(2068, 322)
+texture = ExtResource("2_73gom")
+
+[node name="Tree7" type="Sprite2D" parent="BG"]
+position = Vector2(1355, 355)
+scale = Vector2(1.63713, 1.63713)
+texture = ExtResource("3_gvmy1")
+
+[node name="Tree8" type="Sprite2D" parent="BG"]
+position = Vector2(893, 378)
+scale = Vector2(1.63713, 1.63713)
+texture = ExtResource("3_gvmy1")
+
+[node name="Tree3" type="Sprite2D" parent="BG"]
+position = Vector2(445, 348)
+scale = Vector2(1.7173, 1.7173)
+texture = ExtResource("3_gvmy1")
+
+[node name="Tree4" type="Sprite2D" parent="BG"]
+position = Vector2(276, 410)
+scale = Vector2(1.7173, 1.7173)
+texture = ExtResource("3_gvmy1")
+
+[node name="Tree5" type="Sprite2D" parent="BG"]
+position = Vector2(1844, 223)
+scale = Vector2(2.50633, 2.50633)
+texture = ExtResource("3_gvmy1")
+
+[node name="Tree6" type="Sprite2D" parent="BG"]
+position = Vector2(1567, 417)
+scale = Vector2(1.63713, 1.63713)
+texture = ExtResource("3_gvmy1")
+
+[node name="Tree1" type="Sprite2D" parent="BG"]
+position = Vector2(648.5, 405.584)
+scale = Vector2(1.7173, 1.7173)
+texture = ExtResource("3_gvmy1")
+
+[node name="Tree2" type="Sprite2D" parent="BG"]
+position = Vector2(1129, 469)
+scale = Vector2(1.7173, 1.7173)
+texture = ExtResource("3_gvmy1")
+
+[node name="Tree9" type="Sprite2D" parent="BG"]
+position = Vector2(73, 459)
+scale = Vector2(1.7173, 1.7173)
+texture = ExtResource("3_gvmy1")
+
+[node name="Menu" type="Node2D" parent="."]
+
+[node name="Build" type="Node2D" parent="Menu"]
+
+[node name="000" type="Sprite2D" parent="Menu/Build"]
+position = Vector2(935.075, 524.971)
+scale = Vector2(0.481877, 0.481877)
+texture = ExtResource("1_e8qc1")
+
+[node name="001" type="Sprite2D" parent="Menu/Build"]
+position = Vector2(935.075, 524.971)
+scale = Vector2(0.481877, 0.481877)
+texture = ExtResource("2_xyp27")
+
+[node name="credhov" type="Sprite2D" parent="Menu/Build"]
+position = Vector2(935.075, 524.971)
+scale = Vector2(0.481877, 0.481877)
+texture = ExtResource("3_73gom")
+
+[node name="credreg" type="Sprite2D" parent="Menu/Build"]
+position = Vector2(935.075, 524.971)
+scale = Vector2(0.481877, 0.481877)
+texture = ExtResource("4_gvmy1")
+
+[node name="settingshov" type="Sprite2D" parent="Menu/Build"]
+position = Vector2(935.075, 524.971)
+scale = Vector2(0.481877, 0.481877)
+texture = ExtResource("5_louvd")
+
+[node name="settingsreg" type="Sprite2D" parent="Menu/Build"]
+position = Vector2(935.075, 524.971)
+scale = Vector2(0.481877, 0.481877)
+texture = ExtResource("6_pw7v8")
+
+[node name="coffreg" type="Sprite2D" parent="Menu/Build"]
+position = Vector2(935.075, 524.971)
+scale = Vector2(0.481877, 0.481877)
+texture = ExtResource("7_lqjhu")
+
+[node name="coffhov" type="Sprite2D" parent="Menu/Build"]
+visible = false
+position = Vector2(935.075, 524.971)
+scale = Vector2(0.481877, 0.481877)
+texture = ExtResource("8_xqeq7")
+
+[node name="008" type="Sprite2D" parent="Menu/Build"]
+position = Vector2(935.075, 524.971)
+scale = Vector2(0.481877, 0.481877)
+texture = ExtResource("9_ci4xf")
+
+[node name="starthov" type="Sprite2D" parent="Menu/Build"]
+position = Vector2(935.075, 524.971)
+scale = Vector2(0.481877, 0.481877)
+texture = ExtResource("10_bbbya")
+
+[node name="startreg" type="Sprite2D" parent="Menu/Build"]
+position = Vector2(935.075, 524.971)
+scale = Vector2(0.481877, 0.481877)
+texture = ExtResource("11_l8r6s")
+
+[node name="UI" type="CanvasLayer" parent="Menu"]
+
+[node name="Start" type="TextureButton" parent="Menu/UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -34.0
+offset_right = 68.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Settings" type="TextureButton" parent="Menu/UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 21.0
+offset_top = 108.0
+offset_right = 198.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Credits" type="TextureButton" parent="Menu/UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = 199.0
+offset_right = 169.0
+offset_bottom = 255.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Change" type="TextureButton" parent="Menu/UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = 109.0
+offset_right = -15.0
+offset_bottom = 427.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Menu/UI"]
+offset_left = 1251.0
+offset_top = 41.0
+offset_right = 1877.0
+offset_bottom = 135.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gvmy1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/UI/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Highscorelbl" type="Label" parent="Menu/UI/Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901961, 0.858824, 0.988235, 1)
+theme_override_font_sizes/font_size = 67
+text = "PERSONAL BEST: "
+horizontal_alignment = 1
+
+[node name="Scorelbl" type="Label" parent="Menu/UI/Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901961, 0.858824, 0.988235, 1)
+theme_override_font_sizes/font_size = 67
+text = "0"
+horizontal_alignment = 1
+
+[node name="Anim" type="AnimationPlayer" parent="Menu"]
+libraries = {
+&"": SubResource("AnimationLibrary_gvmy1")
+}
+autoplay = "default"
+speed_scale = 0.309
+
+[connection signal="pressed" from="Menu/UI/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/UI/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Menu/UI/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Menu/UI/Change" to="." method="_on_change_pressed"]

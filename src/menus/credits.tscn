@@ -1,0 +1,150 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdi57aa2pbvc2"]
+
+[ext_resource type="Script" uid="uid://csd27f1crj6xb" path="res://menus/credits.gd" id="1_nm7lk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5rx0"]
+bg_color = Color(0.27451, 0.180392, 0.388235, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nm7lk"]
+bg_color = Color(0.150824, 0.0911958, 0.222556, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c1t8d"]
+
+[node name="Credits" type="CanvasLayer"]
+script = ExtResource("1_nm7lk")
+
+[node name="BG" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.337255)
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -494.0
+offset_top = -225.0
+offset_right = 494.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t5rx0")
+
+[node name="Exit" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = -60.0
+offset_right = 171.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 31
+theme_override_styles/hover = SubResource("StyleBoxFlat_nm7lk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_c1t8d")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c1t8d")
+text = "Exit"
+
+[node name="Creds" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.0
+offset_right = 135.0
+offset_bottom = 109.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 79
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -353.0
+offset_top = -85.0
+offset_right = 353.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 73
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Cod" type="Label" parent="Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+text = "Codimon"
+horizontal_alignment = 1
+
+[node name="Item" type="Label" parent="Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Programming"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Skin" type="Label" parent="Panel/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+text = "Skin"
+horizontal_alignment = 1
+
+[node name="Item" type="Label" parent="Panel/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Art"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item2" type="Label" parent="Panel/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Game Design"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Plant" type="Label" parent="Panel/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+text = "Plant"
+horizontal_alignment = 1
+
+[node name="Item" type="Label" parent="Panel/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "UI"
+horizontal_alignment = 1
+vertical_alignment = 1

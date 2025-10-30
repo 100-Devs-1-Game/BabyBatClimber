@@ -1,3 +1,3 @@
 extends Node
 
-var highscore: int
+var highscore: int = 0
