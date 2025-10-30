@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bybibjaxh6r72"]
+[gd_scene load_steps=38 format=3 uid="uid://bybibjaxh6r72"]
 
 [ext_resource type="Script" uid="uid://d4mud50cb15su" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://cd1l33wstkh2o" path="res://assets/art/player/climbing/00.png" id="2_606se"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://c12cw3gixphch" path="res://assets/art/player/getting_up/008.png" id="17_331ug"]
 [ext_resource type="Texture2D" uid="uid://cydmxjr8nggwh" path="res://assets/art/player/getting_up/009.png" id="18_ny14h"]
 [ext_resource type="Texture2D" uid="uid://d33kb3uwmydwu" path="res://assets/art/player/getting_up/010.png" id="19_ibah8"]
+[ext_resource type="Texture2D" uid="uid://bi1ksm8eux0nv" path="res://assets/art/player/jump/00.png" id="20_hiqhm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oi3di"]
 radius = 30.0
@@ -108,6 +109,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("20_hiqhm")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("10_dx0e4")
 }, {
 "duration": 1.0,
@@ -126,7 +135,7 @@ animations = [{
 "texture": ExtResource("15_iruf7")
 }],
 "loop": true,
-"name": &"jump",
+"name": &"jump_continued",
 "speed": 12.0
 }]
 
@@ -183,7 +192,7 @@ unique_name_in_owner = true
 z_index = 1
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_iruf7")
-animation = &"get_up"
+animation = &"jump"
 autoplay = "get_up"
 
 [node name="AnimatedSprite2D Behind" type="AnimatedSprite2D" parent="Model"]
@@ -193,3 +202,5 @@ z_index = -1
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_j5n4i")
 animation = &"climb"
+
+[connection signal="animation_finished" from="Model/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

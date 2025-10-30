@@ -93,7 +93,9 @@ func jump():
 	else:
 		jump_dir= 1 if side == PlayerSide.LEFT else -1
 	
+	model.scale.x*= -1
 	animated_sprite.play("jump")
+	animated_sprite_behind.hide()
 	
 	side= PlayerSide.NONE
 	y_boost= jump_boost
@@ -118,3 +120,8 @@ func can_climb()-> bool:
 	if kill_area_detection.has_overlapping_areas():
 		return false
 	return true
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if animated_sprite.animation == "jump":
+		animated_sprite.play("jump_continued")
