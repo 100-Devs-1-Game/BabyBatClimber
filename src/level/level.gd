@@ -6,15 +6,15 @@ extends Node2D
 
 @onready var player: CharacterBody2D = $Player
 @onready var objects_node: Node2D = $Objects
+@onready var level_generator: LevelGenerator = $LevelGenerator
 
 var height: float= 0
 
 var delta_height: float
 
 
-#
-#func _ready() -> void:
-	#player.position= Vector2(1920 / 2 + width / 2 - player.width / 2, 1080 * 0.8)
+func _ready() -> void:
+	level_generator.generate(-2000)
 
 
 func _physics_process(delta: float) -> void:
