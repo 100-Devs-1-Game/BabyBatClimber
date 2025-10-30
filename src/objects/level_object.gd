@@ -3,6 +3,10 @@ extends Node2D
 
 
 
+func spawn(height: float):
+	pass
+
+
 func tick(player: Player, delta: float):
 	pass
 
