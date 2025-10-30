@@ -1,0 +1,199 @@
+[gd_scene load_steps=17 format=3 uid="uid://81n08dssewel"]
+
+[ext_resource type="Script" uid="uid://cev76inr16fwj" path="res://level/level.gd" id="1_u52ul"]
+[ext_resource type="Material" uid="uid://bbuvkw80wegb5" path="res://shader/level_side_shader_material.tres" id="2_8cye3"]
+[ext_resource type="Texture2D" uid="uid://bhs8j3plku7g3" path="res://assets/art/fixed/level_side.png" id="2_i2t4f"]
+[ext_resource type="Script" uid="uid://s85m62atbddd" path="res://sandbox.gd" id="3_1ainy"]
+[ext_resource type="PackedScene" uid="uid://bybibjaxh6r72" path="res://player.tscn" id="4_f2txt"]
+[ext_resource type="Script" uid="uid://c7wrmk0rya284" path="res://background/background.gd" id="6_2orkt"]
+[ext_resource type="Texture2D" uid="uid://dovnts24fybiv" path="res://assets/art/background/far_back.png" id="7_8b0r0"]
+[ext_resource type="Texture2D" uid="uid://dsmjevktd34xw" path="res://assets/art/background/tree_1.png" id="7_aicyk"]
+[ext_resource type="Script" uid="uid://7cnpnuewq2tx" path="res://background/background_layer.gd" id="8_8b0r0"]
+[ext_resource type="Texture2D" uid="uid://du7ncal7r3lqw" path="res://assets/art/background/tree_2.png" id="9_h6smj"]
+[ext_resource type="Texture2D" uid="uid://0vgqravd3mqi" path="res://assets/art/background/gate.png" id="10_v5j5c"]
+[ext_resource type="Texture2D" uid="uid://c6fjh53wd845s" path="res://assets/art/background/floor.png" id="11_5pxul"]
+
+[sub_resource type="Gradient" id="Gradient_h6smj"]
+colors = PackedColorArray(0.313211, 0.522067, 1, 1, 0, 0.129412, 0.815686, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v5j5c"]
+gradient = SubResource("Gradient_h6smj")
+
+[sub_resource type="Gradient" id="Gradient_5pxul"]
+offsets = PackedFloat32Array(0, 0.666667)
+colors = PackedColorArray(0.000693898, 0.000693898, 0.000693897, 1, 0.157274, 0.157274, 0.157274, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fedht"]
+gradient = SubResource("Gradient_5pxul")
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_u52ul")
+width = 600.0
+level_side_shader = ExtResource("2_8cye3")
+
+[node name="Sandbox" type="Node" parent="."]
+script = ExtResource("3_1ainy")
+
+[node name="Right Sprite" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = ExtResource("2_8cye3")
+position = Vector2(543, 471)
+texture = ExtResource("2_i2t4f")
+
+[node name="Left Sprite" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = ExtResource("2_8cye3")
+position = Vector2(1377, 474)
+texture = ExtResource("2_i2t4f")
+flip_h = true
+
+[node name="Player" parent="." instance=ExtResource("4_f2txt")]
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+script = ExtResource("6_2orkt")
+global_scroll_factor = 3.0
+
+[node name="ColorRect Level Width" type="ColorRect" parent="Background"]
+visible = false
+z_index = 4
+offset_left = 660.0
+offset_right = 1260.0
+offset_bottom = 40.0
+
+[node name="Gradient" type="TextureRect" parent="Background"]
+offset_left = 599.0
+offset_top = 976.0
+offset_right = 1599.0
+offset_bottom = 1676.0
+rotation = -1.5708
+texture = SubResource("GradientTexture1D_v5j5c")
+
+[node name="Floor" type="TextureRect" parent="Background"]
+offset_left = 611.0
+offset_top = 1114.0
+offset_right = 867.0
+offset_bottom = 1814.0
+rotation = -1.5708
+texture = SubResource("GradientTexture1D_fedht")
+
+[node name="Far Back" type="TextureRect" parent="Background"]
+modulate = Color(0.297093, 0.297093, 0.297093, 1)
+offset_left = 545.0
+offset_top = 239.0
+offset_right = 945.0
+offset_bottom = 685.0
+scale = Vector2(2.025, 2.025)
+texture = ExtResource("7_8b0r0")
+
+[node name="Tree3" type="TextureRect" parent="Background"]
+modulate = Color(0.386757, 0.386757, 0.386757, 1)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -690.0
+offset_right = 173.0
+offset_bottom = -299.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("7_aicyk")
+stretch_mode = 2
+script = ExtResource("8_8b0r0")
+scroll_speed = 0.03
+
+[node name="Tree4" type="TextureRect" parent="Background"]
+modulate = Color(0.287295, 0.287295, 0.287295, 1)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -244.0
+offset_top = -704.0
+offset_right = -17.0
+offset_bottom = -309.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("9_h6smj")
+stretch_mode = 2
+script = ExtResource("8_8b0r0")
+scroll_speed = 0.025
+
+[node name="Tree1" type="TextureRect" parent="Background"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -621.0
+offset_right = 224.0
+offset_bottom = -230.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("7_aicyk")
+stretch_mode = 2
+script = ExtResource("8_8b0r0")
+scroll_speed = 0.06
+
+[node name="Tree2" type="TextureRect" parent="Background"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -355.0
+offset_top = -683.0
+offset_right = -128.0
+offset_bottom = -288.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("9_h6smj")
+stretch_mode = 2
+script = ExtResource("8_8b0r0")
+scroll_speed = 0.055
+
+[node name="Gate" type="TextureRect" parent="Background"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -321.0
+offset_top = -761.0
+offset_right = 79.0
+offset_bottom = -315.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.69, 1.69)
+texture = ExtResource("10_v5j5c")
+stretch_mode = 2
+script = ExtResource("8_8b0r0")
+scroll_speed = 0.1
+
+[node name="Graves" type="TextureRect" parent="Background"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -203.0
+offset_top = -188.0
+offset_right = 58.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("11_5pxul")
+stretch_mode = 2
+script = ExtResource("8_8b0r0")
+scroll_speed = 0.2
