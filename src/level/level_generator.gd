@@ -1,6 +1,7 @@
 class_name LevelGenerator
 extends Node
 
+@export var enabled: bool= true
 @export var step_size: float= 50
 @export var chance_per_step: float= 15.0
 @export var objects: Array[LevelObjectDefinition]
@@ -19,6 +20,9 @@ func _ready() -> void:
 
 
 func generate(until_height: float):
+	if not enabled:
+		return
+	
 	if abs(until_height - last_height) < 100:
 		return
 		 
