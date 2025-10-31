@@ -1,8 +1,11 @@
 class_name Player
 extends CharacterBody2D
 
+signal died
+signal respawned
+
 enum PlayerSide { NONE, LEFT, RIGHT }
-enum State { GETTING_UP, PLAYING, DEAD }
+enum State { GETTING_UP, PLAYING, DEAD, FALLING }
 
 @export var width: float= 30
 @export var climb_speed: float= 100
@@ -15,6 +18,8 @@ enum State { GETTING_UP, PLAYING, DEAD }
 @onready var model: Node2D = %Model
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
 @onready var animated_sprite_behind: AnimatedSprite2D = %"AnimatedSprite2D Behind"
+
+@onready var start_y: float= position.y
 
 
 var side: PlayerSide= PlayerSide.NONE:
@@ -74,6 +79,14 @@ func _physics_process(delta: float) -> void:
 	delta_height= (current_climb_speed + y_boost) * delta
 
 
+func _input(event: InputEvent) -> void:
+	if not OS.is_debug_build():
+		return
+	if event is InputEventKey and event.is_pressed():
+		if event.keycode == KEY_F1:
+			kill()
+
+
 func handle_states(delta: float)-> bool:
 	match state:
 		State.GETTING_UP:
@@ -91,6 +104,17 @@ func handle_states(delta: float)-> bool:
 			position+= dead_velocity * delta
 			return true
 
+		State.FALLING:
+			if position.y > start_y:
+				position.y= start_y
+				animated_sprite.play("get_up")
+				collision_layer= 1
+				state= State.GETTING_UP
+				respawned.emit()
+				return true
+			
+			position= Vector2(1920 / 2, position.y + 1000 * delta)
+			
 	return false
 
 
@@ -121,6 +145,7 @@ func kill():
 	animated_sprite.play("fall")
 	var dir: float= -(position.x - 1920 / 2) / (level.width / 2)
 	dead_velocity= Vector2(dir * 1000, -100)
+	died.emit()
 
 
 func take_control(obj: LevelObject):

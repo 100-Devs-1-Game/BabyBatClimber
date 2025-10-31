@@ -4,14 +4,15 @@ extends Node2D
 @export var width: float = 500.0
 @export var level_side_shader: ShaderMaterial
 
-@onready var player: CharacterBody2D = $Player
+@onready var player: Player = $Player
 @onready var objects_node: Node2D = $Objects
 @onready var decorations_node: Node2D = $Decorations
 @onready var level_generator: LevelGenerator = $LevelGenerator
 
 var height: float= 0
-
 var delta_height: float
+var freeze:= false
+
 
 
 func _ready() -> void:
@@ -19,6 +20,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if freeze:
+		return
+		
 	delta_height= player.delta_height
 	height+= delta_height
 	
@@ -50,6 +54,21 @@ func add_decoration(scene: PackedScene, y: float, right: bool= true):
 	decorations_node.add_child(obj)
 
 
+func reset():
+	for child in objects_node.get_children() + decorations_node.get_children():
+		child.queue_free()
+
+	level_generator.reset()
+	level_side_shader.set_shader_parameter("height", 0)
+
+	$Background.reset()
+
+
+func fade(out: bool):
+	var tween:= get_tree().create_tween()
+	tween.tween_property(%FadeBox, "color:a", 1.0 if out else 0.0, 0.7)
+
+
 func get_left_side()-> float:
 	return 1920 / 2 - width / 2
 
@@ -60,3 +79,20 @@ func get_right_side()-> float:
 
 func _on_update_level_timeout() -> void:
 	level_generator.generate(-height - 2000)
+
+
+func _on_player_died() -> void:
+	freeze= true
+	fade(true)
+	await get_tree().create_timer(1).timeout
+	
+	reset()
+	height= 0
+	_on_update_level_timeout()
+	
+	player.position.y= 0
+	player.state= Player.State.FALLING
+
+	fade(false)
+	await player.respawned
+	freeze= false

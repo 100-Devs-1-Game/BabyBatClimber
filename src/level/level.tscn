@@ -33,7 +33,8 @@ level_side_shader = ExtResource("2_8cye3")
 
 [node name="Sandbox" type="Node" parent="."]
 script = ExtResource("3_1ainy")
-enabled = false
+generator_enabled = true
+skip_getting_up = false
 
 [node name="LevelGenerator" type="Node" parent="."]
 script = ExtResource("4_m5ivw")
@@ -56,7 +57,7 @@ texture = ExtResource("2_i2t4f")
 flip_h = true
 
 [node name="Player" parent="." instance=ExtResource("4_f2txt")]
-position = Vector2(962, 971)
+position = Vector2(960, 971)
 
 [node name="Objects" type="Node2D" parent="."]
 
@@ -65,6 +66,17 @@ position = Vector2(962, 971)
 [node name="Update Level" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="FadeBox" type="ColorRect" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
@@ -236,4 +248,5 @@ stretch_mode = 2
 script = ExtResource("8_8b0r0")
 scroll_speed = 0.2
 
+[connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="timeout" from="Update Level" to="." method="_on_update_level_timeout"]
