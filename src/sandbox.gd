@@ -27,7 +27,8 @@ func _ready() -> void:
 	var branch: LevelObjectDefinition= preload("res://objects/resources/branch_definition.tres")
 	var deco1: PackedScene= preload("res://decorations/decoration1.tscn")
 
-	level.add_level_object(crosses, 0, false)
+	#level.add_level_object(crosses, 0, false)
+	level.add_level_object(branch, 0, false)
 	level.add_level_object(branch, 400, true)
 	level.add_level_object(mushroom, -300, true)
 	level.add_level_object(mushroom, -600, false)
