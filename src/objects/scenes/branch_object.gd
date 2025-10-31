@@ -25,6 +25,8 @@ var current_aim_step: int
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	assert(body is Player)
 	var player: Player= body
+	if player.controlling_object != null:
+		return
 	
 	player.take_control(self)
 	player.position.y= position.y + player_offsets[0]
@@ -56,6 +58,7 @@ func tick(player: Player, delta: float):
 				aim_time= 0
 				$"AudioStreamPlayer Bend".play()
 				state= PlayerState.AIMING
+		
 		PlayerState.AIMING:
 			current_aim_step= clampi(aim_time / aim_time_steps, 0, aim_height_steps.size() - 1)
 			sprite.frame= current_aim_step + 1
