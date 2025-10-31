@@ -3,6 +3,7 @@ extends Node2D
 
 @export var width: float = 500.0
 @export var level_side_shader: ShaderMaterial
+@export var title_scene: PackedScene
 
 @onready var player: Player = $Player
 @onready var objects_node: Node2D = $Objects
@@ -26,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	delta_height= player.delta_height
 	height+= delta_height
 	
-	var score: int= max(0, -height / 100)
+	var score: int= max(0, height / 100)
 	if score > Global.highscore:
 		Global.highscore= score
 	%Score.text= str(score)
@@ -35,6 +36,12 @@ func _physics_process(delta: float) -> void:
 		obj.position.y+= delta_height
 
 	level_side_shader.set_shader_parameter("height", -height / 1468.0)
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.is_pressed():
+		if event.keycode == KEY_ESCAPE:
+			get_tree().change_scene_to_packed(title_scene)
 
 
 func add_level_object(definition: LevelObjectDefinition, y: float, right: bool= true):

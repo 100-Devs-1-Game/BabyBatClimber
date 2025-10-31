@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://b603tnllthddv"]
+[gd_scene load_steps=29 format=3 uid="uid://b603tnllthddv"]
 
 [ext_resource type="Script" uid="uid://cev76inr16fwj" path="res://level/level.gd" id="1_u52ul"]
 [ext_resource type="Material" uid="uid://bbuvkw80wegb5" path="res://shader/level_side_shader_material.tres" id="2_8cye3"]
 [ext_resource type="Texture2D" uid="uid://bhs8j3plku7g3" path="res://assets/art/fixed/level_side.png" id="2_i2t4f"]
 [ext_resource type="Script" uid="uid://s85m62atbddd" path="res://sandbox.gd" id="3_1ainy"]
+[ext_resource type="PackedScene" uid="uid://c44olbdouwv4i" path="res://menus/Title.tscn" id="3_h74y2"]
 [ext_resource type="PackedScene" uid="uid://bybibjaxh6r72" path="res://player.tscn" id="4_f2txt"]
 [ext_resource type="Script" uid="uid://daqa47b43br8a" path="res://level/level_generator.gd" id="4_m5ivw"]
 [ext_resource type="Script" uid="uid://11yiox5nhs5k" path="res://objects/level_object_definition.gd" id="5_sui6v"]
@@ -22,14 +23,20 @@
 [ext_resource type="Texture2D" uid="uid://c6fjh53wd845s" path="res://assets/art/background/floor.png" id="11_5pxul"]
 [ext_resource type="Texture2D" uid="uid://d2n8yb6svk1r1" path="res://assets/art/background/full_size/000.png" id="12_v4yay"]
 [ext_resource type="Texture2D" uid="uid://bide0f3i8oaqe" path="res://assets/art/background/full_size/001.png" id="13_xl7j7"]
+[ext_resource type="FontFile" uid="uid://coqsuny1nbohq" path="res://assets_external/font/Germania_One/GermaniaOne-Regular.ttf" id="15_7cdnq"]
 [ext_resource type="Texture2D" uid="uid://lkiol4j4jbpg" path="res://assets/art/background/full_size/002.png" id="15_o0wo3"]
 [ext_resource type="Texture2D" uid="uid://drbbjwbdfxeup" path="res://assets/art/background/full_size/003.png" id="16_kdsbj"]
 [ext_resource type="Texture2D" uid="uid://cydjyxrjvhhv5" path="res://assets/art/background/full_size/004.png" id="17_ml0fe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lsj08"]
+font = ExtResource("15_7cdnq")
+font_size = 67
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_u52ul")
 width = 600.0
 level_side_shader = ExtResource("2_8cye3")
+title_scene = ExtResource("3_h74y2")
 
 [node name="Sandbox" type="Node" parent="."]
 script = ExtResource("3_1ainy")
@@ -76,6 +83,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
+
+[node name="Score" type="Label" parent="UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = -1
+anchor_left = 0.99
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.01
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "0"
+label_settings = SubResource("LabelSettings_lsj08")
+horizontal_alignment = 2
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
