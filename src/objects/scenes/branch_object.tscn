@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5jjvov1c7fs5"]
+[gd_scene load_steps=11 format=3 uid="uid://c5jjvov1c7fs5"]
 
 [ext_resource type="Script" uid="uid://fyc7kgkbdqq0" path="res://objects/scenes/branch_object.gd" id="1_2glmg"]
 [ext_resource type="Texture2D" uid="uid://bhqic0spor4g2" path="res://assets/art/level_objects/branch/003.png" id="2_6ftwt"]
 [ext_resource type="Texture2D" uid="uid://dg43m4o3jyq70" path="res://assets/art/level_objects/branch/002.png" id="3_ecis5"]
 [ext_resource type="Texture2D" uid="uid://dlltn7fwyglpt" path="res://assets/art/level_objects/branch/001.png" id="4_klo4g"]
 [ext_resource type="Texture2D" uid="uid://b7ph7wt2uhigh" path="res://assets/art/level_objects/branch/000.png" id="5_0er7h"]
+[ext_resource type="AudioStream" uid="uid://bghvkoxcw8jtu" path="res://assets_external/sfx/branch_creak-03.mp3" id="6_klo4g"]
+[ext_resource type="AudioStream" uid="uid://bb0jweshl5veu" path="res://assets_external/sfx/mushroom boing.mp3" id="7_0er7h"]
+[ext_resource type="AudioStream" uid="uid://cyy0n3e3iime0" path="res://assets_external/sfx/leaves.mp3" id="8_0er7h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dj4xw"]
 animations = [{
@@ -53,5 +56,16 @@ position = Vector2(-262, 0)
 visible = false
 color = Color(0.360784, 0.941176, 0.360784, 0.713726)
 polygon = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+
+[node name="AudioStreamPlayer Bend" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_klo4g")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer Boing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_0er7h")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer Leaves" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_0er7h")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

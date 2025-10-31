@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://bybibjaxh6r72"]
+[gd_scene load_steps=69 format=3 uid="uid://bybibjaxh6r72"]
 
 [ext_resource type="Script" uid="uid://d4mud50cb15su" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://cd1l33wstkh2o" path="res://assets/art/player/climbing/00.png" id="2_606se"]
@@ -15,29 +15,22 @@
 [ext_resource type="Texture2D" uid="uid://m5vk0sbarrwe" path="res://assets/art/player/branch animation/007.png" id="7_s7jk6"]
 [ext_resource type="Texture2D" uid="uid://cqnjm8twy2yux" path="res://assets/art/player/climbing/06.png" id="8_5tmop"]
 [ext_resource type="Texture2D" uid="uid://cm1oa3ech6us8" path="res://assets/art/player/branch animation/008.png" id="8_feeoa"]
-[ext_resource type="Texture2D" uid="uid://dm5clje30ps7l" path="res://assets/art/player/climbing/back_leg/000.png" id="9_7ahtn"]
 [ext_resource type="Texture2D" uid="uid://bovcjjjbrak11" path="res://assets/art/player/getting_up/000.png" id="9_efrwb"]
 [ext_resource type="Texture2D" uid="uid://des6rgy8lwrdm" path="res://assets/art/player/fall/000.png" id="9_khis8"]
 [ext_resource type="Texture2D" uid="uid://dhja2e1evnd33" path="res://assets/art/player/branch animation/009.png" id="9_m6nxt"]
-[ext_resource type="Texture2D" uid="uid://mfqt5yavodjo" path="res://assets/art/player/climbing/back_leg/001.png" id="10_7lmhl"]
 [ext_resource type="Texture2D" uid="uid://seekhgdw4kqg" path="res://assets/art/player/fall/001.png" id="10_b88wv"]
 [ext_resource type="Texture2D" uid="uid://cm4pfhen2gx2h" path="res://assets/art/player/jump/01.png" id="10_dx0e4"]
 [ext_resource type="Texture2D" uid="uid://0bldscujeaks" path="res://assets/art/player/getting_up/001.png" id="10_hiqhm"]
-[ext_resource type="Texture2D" uid="uid://b5xmn4wqn7015" path="res://assets/art/player/climbing/back_leg/002.png" id="11_dx0e4"]
 [ext_resource type="Texture2D" uid="uid://b58n63hoxp5l1" path="res://assets/art/player/jump/02.png" id="11_jm5j8"]
 [ext_resource type="Texture2D" uid="uid://ccsxcixo5xrel" path="res://assets/art/player/fall/002.png" id="11_pgbbb"]
 [ext_resource type="Texture2D" uid="uid://c2luiyvc2gmop" path="res://assets/art/player/getting_up/002.png" id="11_tkwlq"]
 [ext_resource type="Texture2D" uid="uid://cca6mrdalil1d" path="res://assets/art/player/jump/03.png" id="12_7hik5"]
 [ext_resource type="Texture2D" uid="uid://cej5ye6ucjeyr" path="res://assets/art/player/fall/003.png" id="12_331ug"]
 [ext_resource type="Texture2D" uid="uid://c1evd25m710xp" path="res://assets/art/player/getting_up/003.png" id="12_hl5qd"]
-[ext_resource type="Texture2D" uid="uid://dlbrbaraxfac7" path="res://assets/art/player/climbing/back_leg/003.png" id="12_jm5j8"]
-[ext_resource type="Texture2D" uid="uid://bi8x47mfkpku" path="res://assets/art/player/climbing/back_leg/004.png" id="13_7hik5"]
 [ext_resource type="Texture2D" uid="uid://bn3u40xs2syir" path="res://assets/art/player/getting_up/004.png" id="13_ek41f"]
 [ext_resource type="Texture2D" uid="uid://cyfak8tl3iht6" path="res://assets/art/player/jump/04.png" id="13_qtqh7"]
 [ext_resource type="Texture2D" uid="uid://b6461wdja2q8a" path="res://assets/art/player/jump/05.png" id="14_2wuci"]
 [ext_resource type="Texture2D" uid="uid://bpe78u56u7ojy" path="res://assets/art/player/getting_up/005.png" id="14_khis8"]
-[ext_resource type="Texture2D" uid="uid://fd64t0kjfcek" path="res://assets/art/player/climbing/back_leg/005.png" id="14_qtqh7"]
-[ext_resource type="Texture2D" uid="uid://bhpw4yad24p6m" path="res://assets/art/player/climbing/back_leg/006.png" id="15_2wuci"]
 [ext_resource type="Texture2D" uid="uid://cooeukuhvs8d7" path="res://assets/art/player/getting_up/006.png" id="15_b88wv"]
 [ext_resource type="Texture2D" uid="uid://dytwybnn7qfdj" path="res://assets/art/player/jump/06.png" id="15_iruf7"]
 [ext_resource type="Texture2D" uid="uid://db8jlky1qqpxv" path="res://assets/art/player/getting_up/007.png" id="16_pgbbb"]
@@ -67,6 +60,10 @@
 [ext_resource type="Texture2D" uid="uid://cuwt2s4mioqdh" path="res://assets/art/player/getting_up/030.png" id="50_0jj5r"]
 [ext_resource type="Texture2D" uid="uid://b6cvg8lhoh0a0" path="res://assets/art/player/getting_up/031.png" id="51_77e46"]
 [ext_resource type="Texture2D" uid="uid://dr4qbk7k5636i" path="res://assets/art/player/getting_up/032.png" id="52_cy2ki"]
+[ext_resource type="AudioStream" uid="uid://bdv1yr2wjnm7u" path="res://assets_external/sfx/climbing.mp3" id="68_mgmjd"]
+[ext_resource type="AudioStream" uid="uid://d2chhh0nbwm2v" path="res://assets_external/sfx/falling.mp3" id="69_va2xi"]
+[ext_resource type="AudioStream" uid="uid://di4qdba0ic2ce" path="res://assets_external/sfx/flying.mp3" id="70_va2xi"]
+[ext_resource type="AudioStream" uid="uid://bc3h0yhi1juue" path="res://assets_external/sfx/landing.mp3" id="71_fkf2u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oi3di"]
 radius = 30.0
@@ -74,6 +71,9 @@ height = 150.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
 size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkf2u"]
+size = Vector2(150, 68)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iruf7"]
 animations = [{
@@ -295,35 +295,6 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_j5n4i"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_7ahtn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_7lmhl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_dx0e4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_jm5j8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_7hik5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_qtqh7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_2wuci")
-}],
-"loop": true,
-"name": &"climb",
-"speed": 5.0
-}]
-
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_4flbx")
 climb_speed = 200.0
@@ -340,6 +311,13 @@ collision_mask = 2
 position = Vector2(0, -106)
 shape = SubResource("RectangleShape2D_4flbx")
 
+[node name="Area2D Slip" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D Slip"]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_fkf2u")
+
 [node name="Model" type="Node2D" parent="."]
 unique_name_in_owner = true
 
@@ -351,12 +329,21 @@ sprite_frames = SubResource("SpriteFrames_iruf7")
 animation = &"branch_climb"
 autoplay = "stand"
 
-[node name="AnimatedSprite2D Behind" type="AnimatedSprite2D" parent="Model"]
-unique_name_in_owner = true
-visible = false
-z_index = -1
-scale = Vector2(0.15, 0.15)
-sprite_frames = SubResource("SpriteFrames_j5n4i")
-animation = &"climb"
+[node name="AudioStreamPlayer Climbing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("68_mgmjd")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer Falling" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("69_va2xi")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer Flying" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("70_va2xi")
+volume_db = 8.211
+bus = &"SFX"
+
+[node name="AudioStreamPlayer Landing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("71_fkf2u")
+bus = &"SFX"
 
 [connection signal="animation_finished" from="Model/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

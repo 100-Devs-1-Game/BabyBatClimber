@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://yqyawu4n0ekw"]
+[gd_scene load_steps=6 format=3 uid="uid://yqyawu4n0ekw"]
 
 [ext_resource type="Texture2D" uid="uid://dd0fj2iv06qmm" path="res://assets/art/level_objects/crosses.png" id="1_8ewkb"]
 [ext_resource type="Script" uid="uid://bet0shbsj0fc1" path="res://objects/level_object.gd" id="1_ahj2b"]
 [ext_resource type="PackedScene" uid="uid://cjqe8mfxditgi" path="res://objects/kill_area.tscn" id="2_agih1"]
+[ext_resource type="AudioStream" uid="uid://ga1ukcokkxrq" path="res://assets_external/sfx/crosses.mp3" id="4_iv7cr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ahj2b"]
 size = Vector2(20, 170)
@@ -18,5 +19,11 @@ texture = ExtResource("1_8ewkb")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource("RectangleShape2D_ahj2b")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_iv7cr")
+bus = &"SFX"
+
+[connection signal="body_entered" from="Area2D" to="AudioStreamPlayer" method="play"]
 
 [editable path="Area2D"]

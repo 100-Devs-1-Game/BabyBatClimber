@@ -33,7 +33,6 @@ level_side_shader = ExtResource("2_8cye3")
 
 [node name="Sandbox" type="Node" parent="."]
 script = ExtResource("3_1ainy")
-generator_enabled = true
 skip_getting_up = false
 
 [node name="LevelGenerator" type="Node" parent="."]

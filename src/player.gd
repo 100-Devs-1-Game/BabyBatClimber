@@ -17,9 +17,12 @@ enum State { GETTING_UP, PLAYING, DEAD, FALLING }
 
 @onready var model: Node2D = %Model
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite2D
-@onready var animated_sprite_behind: AnimatedSprite2D = %"AnimatedSprite2D Behind"
+@onready var area_slip: Area2D = $"Area2D Slip"
 
 @onready var start_y: float= position.y
+
+@onready var audio_climbing: AudioStreamPlayer = $"AudioStreamPlayer Climbing"
+@onready var audio_flying: AudioStreamPlayer = $"AudioStreamPlayer Flying"
 
 
 var side: PlayerSide= PlayerSide.NONE:
@@ -29,6 +32,7 @@ var side: PlayerSide= PlayerSide.NONE:
 			return
 		animated_sprite.play("climb")
 		model.scale.x= 1 if side == PlayerSide.LEFT else -1
+		audio_flying.stop()
 		
 var state:= State.GETTING_UP
 var current_climb_speed: float
@@ -110,6 +114,7 @@ func handle_states(delta: float)-> bool:
 				animated_sprite.play("get_up")
 				collision_layer= 1
 				state= State.GETTING_UP
+				$"AudioStreamPlayer Landing".play()
 				respawned.emit()
 				return true
 			
@@ -120,8 +125,18 @@ func handle_states(delta: float)-> bool:
 
 func update_climb_speed():
 	current_climb_speed= 0
+	audio_climbing.pitch_scale= 1.0
+
 	if Input.is_action_pressed("climb") and can_climb():
 		current_climb_speed= climb_speed
+		if not audio_climbing.playing:
+			audio_climbing.play()
+	else:
+		audio_climbing.stop()
+
+	if area_slip.has_overlapping_areas():
+		current_climb_speed-= 100
+		audio_climbing.pitch_scale= 2.0
 
 
 func jump(straight: bool= false):
@@ -132,11 +147,12 @@ func jump(straight: bool= false):
 	
 	model.scale.x*= -1
 	animated_sprite.play("jump")
-	animated_sprite_behind.hide()
 	
 	side= PlayerSide.NONE
 	if not straight:
 		y_boost= jump_boost
+
+	audio_flying.play()
 
 
 func kill():
@@ -145,6 +161,10 @@ func kill():
 	animated_sprite.play("fall")
 	var dir: float= -(position.x - 1920 / 2) / (level.width / 2)
 	dead_velocity= Vector2(dir * 1000, -100)
+
+	audio_climbing.stop()
+	audio_flying.stop()
+	$"AudioStreamPlayer Falling".start()
 	died.emit()
 
 

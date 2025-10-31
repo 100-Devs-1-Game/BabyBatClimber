@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsk6h4hxhui0b"]
+[gd_scene load_steps=5 format=3 uid="uid://bsk6h4hxhui0b"]
 
 [ext_resource type="Script" uid="uid://4n3suom5acei" path="res://objects/scenes/mushroom_object.gd" id="1_v1elf"]
 [ext_resource type="Texture2D" uid="uid://rgpou5aeth11" path="res://assets/art/level_objects/mushroom.png" id="2_xx01a"]
+[ext_resource type="AudioStream" uid="uid://bb0jweshl5veu" path="res://assets_external/sfx/mushroom boing.mp3" id="3_wnb3d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1elf"]
 size = Vector2(50, 50)
@@ -17,5 +18,9 @@ texture = ExtResource("2_xx01a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_v1elf")
+
+[node name="AudioStreamPlayer Boing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wnb3d")
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

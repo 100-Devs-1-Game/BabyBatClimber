@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c1umtyjmtw7n0"
+path="res://.godot/imported/branch creaking.mp3-b5e369c651fa300404eb68ccbd1cdbff.mp3str"
+
+[deps]
+
+source_file="res://assets_external/sfx/branch creaking.mp3"
+dest_files=["res://.godot/imported/branch creaking.mp3-b5e369c651fa300404eb68ccbd1cdbff.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

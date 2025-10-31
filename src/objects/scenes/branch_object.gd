@@ -32,6 +32,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		player.model.scale.x= 1
 	else:
 		player.model.scale.x= -1
+	$"AudioStreamPlayer Leaves".play()
 
 
 func tick(player: Player, delta: float):
@@ -52,9 +53,9 @@ func tick(player: Player, delta: float):
 		PlayerState.IDLE:
 			player.position.y= position.y + player_offsets[0]
 			if Input.is_action_just_pressed("jump"):
-				state= PlayerState.AIMING
 				aim_time= 0
-
+				$"AudioStreamPlayer Bend".play()
+				state= PlayerState.AIMING
 		PlayerState.AIMING:
 			current_aim_step= clampi(aim_time / aim_time_steps, 0, aim_height_steps.size() - 1)
 			sprite.frame= current_aim_step + 1
@@ -69,6 +70,7 @@ func tick(player: Player, delta: float):
 					var tween:= get_tree().create_tween()
 					tween.tween_property(player, "position:y", position.y + player_offsets[0], 0.1)
 					tween.tween_callback(func(): state= PlayerState.JUMPING)
+					$"AudioStreamPlayer Boing".play()
 					state= PlayerState.LAUNCHING
 				else:
 					state= PlayerState.IDLE
