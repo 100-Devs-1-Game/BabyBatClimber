@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://de5qk36vrlhyh"]
+
+[ext_resource type="AudioStream" uid="uid://btj4y85xhd4vt" path="res://assets/music/2D Tree Climbing Platformer.mp3" id="1_uyuvo"]
+
+[node name="Music Player" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_uyuvo")
+autoplay = true
+bus = &"Music"
+parameters/looping = true

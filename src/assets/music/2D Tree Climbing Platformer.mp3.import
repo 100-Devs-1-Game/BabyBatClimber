@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://btj4y85xhd4vt"
+path="res://.godot/imported/2D Tree Climbing Platformer.mp3-c89e6ccc964c873a7fdc82e95d3292a6.mp3str"
+
+[deps]
+
+source_file="res://assets/music/2D Tree Climbing Platformer.mp3"
+dest_files=["res://.godot/imported/2D Tree Climbing Platformer.mp3-c89e6ccc964c873a7fdc82e95d3292a6.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
