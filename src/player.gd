@@ -17,7 +17,7 @@ enum State { GETTING_UP, PLAYING, DEAD }
 @onready var animated_sprite_behind: AnimatedSprite2D = %"AnimatedSprite2D Behind"
 
 
-var side: PlayerSide= PlayerSide.RIGHT:
+var side: PlayerSide= PlayerSide.NONE:
 	set(s):
 		side= s
 		if side == PlayerSide.NONE:
