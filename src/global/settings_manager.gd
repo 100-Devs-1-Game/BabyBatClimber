@@ -18,6 +18,8 @@ const SEC_GAME: String = "Game"
 const SETTINGS = preload("res://menus/settings.tscn")
 
 func _ready() -> void:
+	# TODO re-enable when fixed
+	return
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	add_to_group("SHandler")
 

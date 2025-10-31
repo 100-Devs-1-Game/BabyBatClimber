@@ -11,6 +11,11 @@ extends CanvasLayer
 var settings_handler
 
 func _ready() -> void:
+	exit_button.pressed.connect(func(): SettingsManager.toggle_settings_panel())
+
+	# TODO re-enable when fixed
+	return
+
 	settings_handler = get_tree().get_first_node_in_group("SHandler")
 	if settings_handler == null:
 		push_error("No settings handler found.")
@@ -29,8 +34,6 @@ func _connect_signals() -> void:
 	master_slider.value_changed.connect(_on_master_slider_changed)
 	sfx_slider.value_changed.connect(_on_sfx_slider_changed)
 	music_slider.value_changed.connect(_on_music_slider_changed)
-
-	exit_button.pressed.connect(func(): SettingsManager.toggle_settings_panel())
 
 
 func _on_fullscreen_selected(fullscreen: bool) -> void:
