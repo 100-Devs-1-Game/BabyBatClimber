@@ -77,13 +77,14 @@ func _physics_process(delta: float) -> void:
 func handle_states(delta: float)-> bool:
 	match state:
 		State.GETTING_UP:
-			if not animated_sprite.is_playing():
+			if animated_sprite.animation == "stand":
 				var dir:= roundi(Input.get_axis("left", "right"))
 				if dir != 0:
 					side= PlayerSide.RIGHT if dir < 0 else PlayerSide.LEFT
 					jump()
 					state= State.PLAYING
 			return true
+			
 		State.DEAD:
 			dead_velocity.x*= 1 - delta
 			dead_velocity.y+= 1000 * delta
@@ -139,5 +140,7 @@ func can_climb()-> bool:
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if animated_sprite.animation == "jump":
+	if animated_sprite.animation == "get_up":
+		animated_sprite.play("stand")
+	elif animated_sprite.animation == "jump":
 		animated_sprite.play("jump_continued")
