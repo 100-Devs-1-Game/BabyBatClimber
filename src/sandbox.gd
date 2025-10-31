@@ -1,14 +1,26 @@
 extends Node
 
-@export var enabled:= true
+@export var generator_enabled:= false
+@export var skip_getting_up: bool= true
 
 @onready var level: Level= get_parent()
 
 
 func _ready() -> void:
-	if not enabled:
+	if not OS.is_debug_build():
+		queue_free()
 		return
+
 	await get_parent().ready
+
+	if skip_getting_up:
+		level.player.side= Player.PlayerSide.RIGHT
+		level.player.jump()
+		level.player.state= Player.State.PLAYING
+
+	if not generator_enabled:
+		return
+
 	
 	var mushroom: LevelObjectDefinition= preload("res://objects/resources/mushroom_definition.tres")
 	var crosses: LevelObjectDefinition= preload("res://objects/resources/crosses_definition.tres")
