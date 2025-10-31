@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 	if side != PlayerSide.NONE:
 		y_boost= 0
 		if Input.is_action_just_pressed("jump"):
-			jump()
+			jump(not Input.is_action_pressed("climb"))
 		else:
 			if current_climb_speed > 0 and not animated_sprite.is_playing():
 				animated_sprite.play("climb")
@@ -100,7 +100,7 @@ func update_climb_speed():
 		current_climb_speed= climb_speed
 
 
-func jump():
+func jump(straight: bool= false):
 	if side == PlayerSide.NONE:
 		jump_dir= jump_dir * -1
 	else:
@@ -111,7 +111,8 @@ func jump():
 	animated_sprite_behind.hide()
 	
 	side= PlayerSide.NONE
-	y_boost= jump_boost
+	if not straight:
+		y_boost= jump_boost
 
 
 func kill():
