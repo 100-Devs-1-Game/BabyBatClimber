@@ -164,7 +164,7 @@ func kill():
 
 	audio_climbing.stop()
 	audio_flying.stop()
-	$"AudioStreamPlayer Falling".start()
+	$"AudioStreamPlayer Falling".play()
 	died.emit()
 
 

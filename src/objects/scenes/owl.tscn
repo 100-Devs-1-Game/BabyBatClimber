@@ -56,6 +56,6 @@ bus = &"SFX"
 stream = ExtResource("8_jxs8h")
 bus = &"SFX"
 
-[connection signal="body_entered" from="Kill Area" to="AudioStreamPlayer Hoot" method="play"]
+[connection signal="body_entered" from="Kill Area" to="." method="_on_kill_area_body_entered"]
 
 [editable path="Kill Area"]
