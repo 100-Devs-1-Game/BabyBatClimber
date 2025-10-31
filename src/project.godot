@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://global/global.gd"
 SettingsManager="*res://global/settings_manager.gd"
+MusicPlayer="*res://global/music_player.tscn"
 
 [display]
 
