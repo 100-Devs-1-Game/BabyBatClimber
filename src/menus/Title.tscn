@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c44olbdouwv4i"]
+[gd_scene load_steps=20 format=3 uid="uid://c44olbdouwv4i"]
 
 [ext_resource type="Texture2D" uid="uid://b4guv3alk2dha" path="res://assets/art/menu/000.png" id="1_e8qc1"]
 [ext_resource type="Script" uid="uid://bcl2f7bs8fe41" path="res://menus/title.gd" id="1_xyp27"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cqot5rbjg8vdk" path="res://assets/art/menu/008.png" id="9_ci4xf"]
 [ext_resource type="Texture2D" uid="uid://glwoej3ulgsv" path="res://assets/art/menu/009.png" id="10_bbbya"]
 [ext_resource type="Texture2D" uid="uid://c3f0coolkvrd6" path="res://assets/art/menu/010.png" id="11_l8r6s"]
+[ext_resource type="FontFile" uid="uid://coqsuny1nbohq" path="res://assets_external/font/Germania_One/GermaniaOne-Regular.ttf" id="15_fe52m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvmy1"]
 bg_color = Color(0.403922, 0.219608, 0.415686, 1)
@@ -310,13 +311,16 @@ alignment = 1
 [node name="Highscorelbl" type="Label" parent="Menu/UI/Panel/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.901961, 0.858824, 0.988235, 1)
+theme_override_fonts/font = ExtResource("15_fe52m")
 theme_override_font_sizes/font_size = 67
 text = "PERSONAL BEST: "
 horizontal_alignment = 1
 
 [node name="Scorelbl" type="Label" parent="Menu/UI/Panel/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.901961, 0.858824, 0.988235, 1)
+theme_override_fonts/font = ExtResource("15_fe52m")
 theme_override_font_sizes/font_size = 67
 text = "0"
 horizontal_alignment = 1

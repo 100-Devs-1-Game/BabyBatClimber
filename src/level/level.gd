@@ -26,6 +26,11 @@ func _physics_process(delta: float) -> void:
 	delta_height= player.delta_height
 	height+= delta_height
 	
+	var score: int= max(0, -height / 100)
+	if score > Global.highscore:
+		Global.highscore= score
+	%Score.text= str(score)
+	
 	for obj: Node2D in objects_node.get_children() + decorations_node.get_children():
 		obj.position.y+= delta_height
 
