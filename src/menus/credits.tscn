@@ -1,6 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdi57aa2pbvc2"]
+[gd_scene load_steps=7 format=3 uid="uid://bdi57aa2pbvc2"]
 
 [ext_resource type="Script" uid="uid://csd27f1crj6xb" path="res://menus/credits.gd" id="1_nm7lk"]
+[ext_resource type="FontFile" uid="uid://coqsuny1nbohq" path="res://assets_external/font/Germania_One/GermaniaOne-Regular.ttf" id="2_jkw7x"]
+
+[sub_resource type="Theme" id="Theme_5jbn1"]
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("2_jkw7x")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5rx0"]
 bg_color = Color(0.27451, 0.180392, 0.388235, 1)
@@ -32,12 +37,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -494.0
+offset_left = -600.0
 offset_top = -225.0
-offset_right = 494.0
+offset_right = 600.0
 offset_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_5jbn1")
 theme_override_styles/panel = SubResource("StyleBoxFlat_t5rx0")
 
 [node name="Exit" type="Button" parent="Panel"]
@@ -54,6 +60,7 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
+theme_override_fonts/font = ExtResource("2_jkw7x")
 theme_override_font_sizes/font_size = 31
 theme_override_styles/hover = SubResource("StyleBoxFlat_nm7lk")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_c1t8d")
@@ -88,11 +95,12 @@ offset_right = 353.0
 offset_bottom = 85.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 73
+theme_override_constants/separation = 100
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="Cod" type="Label" parent="Panel/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -110,6 +118,7 @@ vertical_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="Skin" type="Label" parent="Panel/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -134,6 +143,7 @@ vertical_alignment = 1
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="Plant" type="Label" parent="Panel/VBoxContainer/VBoxContainer3"]
 layout_mode = 2
@@ -146,5 +156,24 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "UI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Plant" type="Label" parent="Panel/VBoxContainer/VBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 52
+text = "Aaron Busch"
+horizontal_alignment = 1
+
+[node name="Item" type="Label" parent="Panel/VBoxContainer/VBoxContainer4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Music
+"
 horizontal_alignment = 1
 vertical_alignment = 1
