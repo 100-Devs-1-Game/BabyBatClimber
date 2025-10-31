@@ -8,6 +8,7 @@ enum PlayerState { MOVING, IDLE, AIMING, JUMPING, LAUNCHING }
 @export var aim_time_steps: float= 0.25
 @export var player_lean_angle: float= 20.0
 
+@onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var move_target: Marker2D = $"Move Target"
 @onready var area: Area2D = $Area2D
 
@@ -47,6 +48,7 @@ func tick(player: Player, delta: float):
 
 		PlayerState.AIMING:
 			current_aim_step= clampi(aim_time / aim_time_steps, 0, aim_height_steps.size() - 1)
+			sprite.frame= current_aim_step + 1
 
 			if Input.is_action_just_released("jump"):
 				var dir:= roundi(Input.get_axis("left", "right"))
@@ -59,6 +61,7 @@ func tick(player: Player, delta: float):
 					tween.tween_callback(func(): state= PlayerState.JUMPING)
 					state= PlayerState.LAUNCHING
 				else:
+					sprite.frame= 0
 					state= PlayerState.IDLE
 				return
 			aim_time+= delta
@@ -84,6 +87,7 @@ func tick(player: Player, delta: float):
 
 		PlayerState.LAUNCHING:
 			pass
+			
 		PlayerState.JUMPING:
 			player.rotation= 0
 			player.jump()
