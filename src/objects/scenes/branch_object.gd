@@ -28,20 +28,29 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 	player.take_control(self)
 	player.position.y= position.y + player_offsets[0]
+	if move_target.global_position.x > player.position.x:
+		player.model.scale.x= 1
+	else:
+		player.model.scale.x= -1
 
 
 func tick(player: Player, delta: float):
 	match state:
 		PlayerState.MOVING:
+			if not player.animated_sprite.animation == "branch_climb":
+				player.animated_sprite.play("branch_climb")
+
 			var dir: int= sign(move_target.global_position.x - player.position.x)
 			var prev_pos_x: float= player.position.x
 			player.position.x+= dir * player_move_speed * delta
 			
 			if sign(player.position.x - move_target.global_position.x) != sign(prev_pos_x - move_target.global_position.x):
 				player.position.x= move_target.global_position.x
+				player.animated_sprite.play("branch_rest")
 				state= PlayerState.IDLE
 
 		PlayerState.IDLE:
+			player.position.y= position.y + player_offsets[0]
 			if Input.is_action_just_pressed("jump"):
 				state= PlayerState.AIMING
 				aim_time= 0
@@ -52,6 +61,7 @@ func tick(player: Player, delta: float):
 
 			if Input.is_action_just_released("jump"):
 				var dir:= roundi(Input.get_axis("left", "right"))
+				sprite.frame= 0
 				if dir != 0:
 					area.monitoring= false
 					player.side= Player.PlayerSide.RIGHT if dir < 0 else Player.PlayerSide.LEFT
@@ -61,22 +71,22 @@ func tick(player: Player, delta: float):
 					tween.tween_callback(func(): state= PlayerState.JUMPING)
 					state= PlayerState.LAUNCHING
 				else:
-					sprite.frame= 0
 					state= PlayerState.IDLE
 				return
+			
 			aim_time+= delta
 			aim_height= aim_height_steps[current_aim_step]
 			
-			player.position.y= position.y + player_offsets[current_aim_step]
+			player.position.y= position.y + player_offsets[current_aim_step + 1]
 			
 			var dir:= 0
 			
 			if Input.is_action_pressed("left"):
 				dir= -1
-				player.rotation= -deg_to_rad(player_lean_angle)
+				player.model.scale.x= -1
 			elif Input.is_action_pressed("right"):
 				dir= 1
-				player.rotation= deg_to_rad(player_lean_angle)
+				player.model.scale.x= 1
 			else:
 				player.rotation= 0
 				

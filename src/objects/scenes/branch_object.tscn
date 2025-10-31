@@ -32,12 +32,12 @@ size = Vector2(280, 30)
 [node name="BranchObject" type="Node2D"]
 script = ExtResource("1_2glmg")
 player_move_speed = 400.0
-player_offsets = Array[int]([50, 90, 130])
+player_offsets = Array[int]([50, 110, 150, 220])
 aim_height_steps = Array[int]([150, 300, 500])
 aim_time_steps = 0.5
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-136, 9)
+position = Vector2(-136, 56)
 sprite_frames = SubResource("SpriteFrames_dj4xw")
 
 [node name="Area2D" type="Area2D" parent="."]
