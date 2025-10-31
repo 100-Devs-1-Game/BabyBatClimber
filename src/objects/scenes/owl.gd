@@ -6,4 +6,4 @@ func spawn(height: float):
 
 
 func _on_kill_area_body_entered(body: Node2D) -> void:
-	$"AudioStreamPlayer Hoot"
+	$"AudioStreamPlayer Hoot".play()
