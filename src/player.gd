@@ -38,7 +38,6 @@ var state:= State.GETTING_UP
 var current_climb_speed: float
 var jump_dir: int
 var y_boost: float
-var delta_height: float
 var dead_velocity: Vector2
 
 var controlling_object: LevelObject
@@ -48,8 +47,6 @@ var score: int
 
 
 func _physics_process(delta: float) -> void:
-	delta_height= 0
-
 	if handle_states(delta):
 		return
 	
@@ -80,7 +77,7 @@ func _physics_process(delta: float) -> void:
 
 	update_climb_speed()
 	
-	delta_height= (current_climb_speed + y_boost) * delta
+	position.y-= (current_climb_speed + y_boost) * delta
 
 
 func _input(event: InputEvent) -> void:
@@ -183,6 +180,10 @@ func can_climb()-> bool:
 	if kill_area_detection.has_overlapping_areas():
 		return false
 	return true
+
+
+func should_camera_follow()-> bool:
+	return state != State.DEAD and state != State.FALLING
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:

@@ -9,9 +9,8 @@ extends Node2D
 @onready var objects_node: Node2D = $Objects
 @onready var decorations_node: Node2D = $Decorations
 @onready var level_generator: LevelGenerator = $LevelGenerator
+@onready var camera: Camera2D = $Camera2D
 
-var height: float= 0
-var delta_height: float
 var freeze:= false
 
 
@@ -23,19 +22,16 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if freeze:
 		return
-		
-	delta_height= player.delta_height
-	height+= delta_height
 	
-	var score: int= max(0, height / 100)
+	var score: int= max(0, -player.position.y / 100)
 	if score > Global.highscore:
 		Global.highscore= score
 	%Score.text= str(score)
-	
-	for obj: Node2D in objects_node.get_children() + decorations_node.get_children():
-		obj.position.y+= delta_height
 
-	level_side_shader.set_shader_parameter("height", -height / 1468.0)
+
+func _process(delta: float) -> void:
+	if player.should_camera_follow():
+		camera.position.y= min(540, player.position.y - 400)
 
 
 func _input(event: InputEvent) -> void:
@@ -90,7 +86,7 @@ func get_right_side()-> float:
 
 
 func _on_update_level_timeout() -> void:
-	level_generator.generate(-height - 2000)
+	level_generator.generate(player.position.y - 2000)
 
 
 func _on_player_died() -> void:
@@ -99,7 +95,6 @@ func _on_player_died() -> void:
 	await get_tree().create_timer(1).timeout
 	
 	reset()
-	height= 0
 	_on_update_level_timeout()
 	
 	player.position.y= 0
